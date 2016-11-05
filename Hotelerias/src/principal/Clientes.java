@@ -39,6 +39,7 @@ import javax.swing.JDesktopPane;
 
 import clases.Cliente;
 import arraylist.ArregloCliente;
+import java.awt.Toolkit;
 
 public class Clientes extends JDialog implements ActionListener {
 
@@ -63,7 +64,6 @@ public class Clientes extends JDialog implements ActionListener {
 	// private JLabel lblFecNac1;
 
 	private JTextArea txtS;
-	private JDesktopPane desktopPane;
 	private JTextField txtNac;
 	private JTextField txtTelefono;
 	private JTextField txtDNI;
@@ -98,10 +98,11 @@ public class Clientes extends JDialog implements ActionListener {
 	 * Create the dialog.
 	 */
 	public Clientes() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Clientes.class.getResource("/imagenes/CDC.jpg")));
 		getContentPane().setForeground(new Color(106, 90, 205));
-		getContentPane().setBackground(new Color(245, 245, 245));
-		setTitle("REGISTRO DE LOS CLIENTES CLIENTES");
-		setBounds(100, 100, 651, 457);
+		getContentPane().setBackground(Color.WHITE);
+		setTitle("REGISTRO DE LOS CLIENTES");
+		setBounds(100, 100, 1020, 730);
 		getContentPane().setLayout(null);
 
 		{
@@ -196,24 +197,24 @@ public class Clientes extends JDialog implements ActionListener {
 			getContentPane().add(cbbOpciones);
 		}
 		{
-			btnProcesar = new JButton("Procesar");
+			btnProcesar = new JButton("");
 			btnProcesar.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnProcesar.setBackground(new Color(169, 169, 169));
 			btnProcesar.setForeground(new Color(0, 0, 205));
-			btnProcesar.setIcon(new ImageIcon(Clientes.class.getResource("/imagenes/procesar.gif")));
+			btnProcesar.setIcon(new ImageIcon(Clientes.class.getResource("/imagenes/procesar.png")));
 			btnProcesar.addActionListener(this);
-			btnProcesar.setBounds(10, 376, 122, 32);
+			btnProcesar.setBounds(10, 604, 115, 47);
 			getContentPane().add(btnProcesar);
 		}
 		{
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(271, 11, 354, 327);
+			scrollPane.setBounds(443, 11, 515, 452);
 			getContentPane().add(scrollPane);
 			{
 				txtS = new JTextArea();
+				scrollPane.setViewportView(txtS);
 				txtS.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
 				txtS.setBackground(new Color(253, 245, 230));
-				scrollPane.setViewportView(txtS);
 			}
 		}
 		{
@@ -221,17 +222,10 @@ public class Clientes extends JDialog implements ActionListener {
 			btnSalir.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnSalir.setBackground(new Color(169, 169, 169));
 			btnSalir.setForeground(new Color(0, 0, 205));
-			btnSalir.setIcon(new ImageIcon(Clientes.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(Clientes.class.getResource("/imagenes/cancelar.png")));
 			btnSalir.addActionListener(this);
-			btnSalir.setBounds(139, 376, 122, 32);
+			btnSalir.setBounds(208, 604, 115, 47);
 			getContentPane().add(btnSalir);
-		}
-
-		{
-			desktopPane = new JDesktopPane();
-			desktopPane.setBackground(Color.RED);
-			desktopPane.setBounds(228, 11, 17, 361);
-			getContentPane().add(desktopPane);
 		}
 
 		txtNac = new JTextField();
@@ -307,6 +301,9 @@ public class Clientes extends JDialog implements ActionListener {
 			lblTelefono.setBounds(10, 230, 46, 14);
 			getContentPane().add(lblTelefono);
 		}
+		
+		
+		
 		codigo();
 		listar();
 	}

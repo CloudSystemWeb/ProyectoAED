@@ -628,10 +628,10 @@ public class Hospedaje extends JFrame implements ActionListener {
 	}
 
 	protected void do_button_2_actionPerformed(ActionEvent arg0) {
-		new CodigoHabitaciones().setVisible(true);
+		//new CodigoHabitaciones().setVisible(true);
 	}
 
 	protected void do_button_3_actionPerformed(ActionEvent arg0) {
-		new CodigoRecepcionistas().setVisible(true);
+	//	new CodigoRecepcionistas().setVisible(true);
 	}
 }

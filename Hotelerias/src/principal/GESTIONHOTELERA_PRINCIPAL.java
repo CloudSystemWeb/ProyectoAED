@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener {
 
@@ -29,7 +30,6 @@ public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener
 	private JTextField txtUsuario;
 	private JButton btnIngresar;
 	private JButton btnSalir;
-	private JTextField txtIngreseUsuarioY;
 	private JLabel label;
 
 	/**
@@ -49,8 +49,9 @@ public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener
 	 * Create the dialog.
 	 */
 	public GESTIONHOTELERA_PRINCIPAL() {
-		setTitle("Entrada  a la gesti\u00F3n Hotelera");
-		setBounds(100, 100, 517, 312);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/7.jpg")));
+		setTitle("Sistema de Gestion de Cines");
+		setBounds(100, 100, 700, 500);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -58,59 +59,50 @@ public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener
 		{
 			lblUsuario = new JLabel("Usuario");
 			lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 17));
-			lblUsuario.setForeground(Color.CYAN);
-			lblUsuario.setBounds(35, 56, 106, 20);
+			lblUsuario.setForeground(Color.BLACK);
+			lblUsuario.setBounds(218, 164, 106, 20);
 			contentPanel.add(lblUsuario);
 		}
 		{
 			txtPasword = new JPasswordField();
 			txtPasword.setColumns(15);
-			txtPasword.setBounds(166, 121, 146, 22);
+			txtPasword.setBounds(349, 229, 146, 22);
 			contentPanel.add(txtPasword);
 		}
 		{
 			lblContrasea = new JLabel("Contrase\u00F1a");
 			lblContrasea.setFont(new Font("Tahoma", Font.BOLD, 17));
-			lblContrasea.setForeground(Color.CYAN);
-			lblContrasea.setBounds(35, 121, 106, 20);
+			lblContrasea.setForeground(Color.BLACK);
+			lblContrasea.setBounds(218, 229, 106, 20);
 			contentPanel.add(lblContrasea);
 		}
 		{
 			txtUsuario = new JTextField();
-			txtUsuario.setBounds(166, 56, 146, 22);
+			txtUsuario.setBounds(349, 164, 146, 22);
 			contentPanel.add(txtUsuario);
 			txtUsuario.setColumns(10);
 		}
 		{
 			btnIngresar = new JButton("");
-			btnIngresar.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/48-icono9.png")));
+			btnIngresar.setBackground(Color.WHITE);
+			btnIngresar.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/entrar.png")));
 			btnIngresar.addActionListener(this);
-			btnIngresar.setForeground(Color.BLUE);
-			btnIngresar.setBounds(364, 13, 132, 99);
+			btnIngresar.setForeground(new Color(0, 0, 255));
+			btnIngresar.setBounds(521, 148, 115, 47);
 			contentPanel.add(btnIngresar);
 		}
 		{
 			btnSalir = new JButton("");
-			btnSalir.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/dialog-error.png")));
+			btnSalir.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/cancelar.png")));
 			btnSalir.addActionListener(this);
 			btnSalir.setForeground(Color.BLUE);
-			btnSalir.setBounds(364, 123, 132, 99);
+			btnSalir.setBounds(521, 216, 115, 47);
 			contentPanel.add(btnSalir);
 		}
 		{
-			txtIngreseUsuarioY = new JTextField();
-			txtIngreseUsuarioY.setBackground(Color.ORANGE);
-			txtIngreseUsuarioY.setForeground(Color.RED);
-			txtIngreseUsuarioY.setFont(new Font("Tahoma", Font.BOLD, 15));
-			txtIngreseUsuarioY.setText("Ingrese Usuario y Contrase\u00F1a para entrar");
-			txtIngreseUsuarioY.setBounds(10, 11, 333, 20);
-			contentPanel.add(txtIngreseUsuarioY);
-			txtIngreseUsuarioY.setColumns(10);
-		}
-		{
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/contra.jpg")));
-			label.setBounds(0, 0, 501, 273);
+			label.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/Loing.png")));
+			label.setBounds(0, 0, 684, 462);
 			contentPanel.add(label);
 		}
 	}

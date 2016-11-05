@@ -609,11 +609,11 @@ public class Reserva extends JFrame implements ActionListener {
 	}
 
 	protected void do_btnBuscar_3_actionPerformed(ActionEvent arg0) {
-		new CodigoHabitacion().setVisible(true);
+		//new CodigoHabitacion().setVisible(true);
 	}
 
 	protected void do_btnBuscar_4_actionPerformed(ActionEvent arg0) {
-		new CodigoRecepcionista().setVisible(true);
+//		new CodigoRecepcionista().setVisible(true);
 	}
 
 	private void anular() {
