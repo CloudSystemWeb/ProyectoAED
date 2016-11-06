@@ -2,93 +2,69 @@ package clases;
 
 public class Sala {
 
+	private int codSala;
 	private int codCine;
-	private String nombre;
-	private String departamento;
-	private String provincia;
-	private String distrito;
-	private String fechaIniOper;
-	private int estadoCine;
+	private int numeroSala;
+	private int numeroFilas;
+	private int numeroButacas;
 
-	public Sala(int codCine, String nombre, String departamento, String provincia, String distrito, String fechaIniOper,
-			int estadoCine) {
+
+	public Sala(int codSala, int codCine, int numeroSala, int numeroFilas, int numeroButacas) {
 		super();
+		this.codSala = codSala;
 		this.codCine = codCine;
-		this.nombre = nombre;
-		this.departamento = departamento;
-		this.provincia = provincia;
-		this.distrito = distrito;
-		this.fechaIniOper = fechaIniOper;
-		this.estadoCine = estadoCine;
+		this.numeroSala = numeroSala;
+		this.numeroFilas = numeroFilas;
+		this.numeroButacas = numeroButacas;
 	}
 
-	public String EstadoCine() {
-		String mens = "";
-		if (estadoCine == 0) {
-			mens = "Estandar";
-		}
-
-		else if (estadoCine == 1) {
-			mens = "Prime";
-		}
-
-		return mens;
+	public int getCodSala() {
+		return codSala;
 	}
+
+
+	public void setCodSala(int codSala) {
+		this.codSala = codSala;
+	}
+
 
 	public int getCodCine() {
 		return codCine;
 	}
 
+
 	public void setCodCine(int codCine) {
 		this.codCine = codCine;
 	}
 
-	public String getNombre() {
-		return nombre;
+
+	public int getNumeroSala() {
+		return numeroSala;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setNumeroSala(int numeroSala) {
+		this.numeroSala = numeroSala;
 	}
 
-	public String getDepartamento() {
-		return departamento;
+
+	public int getNumeroFilas() {
+		return numeroFilas;
 	}
 
-	public void setDepartamento(String departamento) {
-		this.departamento = departamento;
+
+	public void setNumeroFilas(int numeroFilas) {
+		this.numeroFilas = numeroFilas;
 	}
 
-	public String getProvincia() {
-		return provincia;
+
+	public int getNumeroButacas() {
+		return numeroButacas;
 	}
 
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
 
-	public String getDistrito() {
-		return distrito;
+	public void setNumeroButacas(int numeroButacas) {
+		this.numeroButacas = numeroButacas;
 	}
-
-	public void setDistrito(String distrito) {
-		this.distrito = distrito;
-	}
-
-	public String getFechaIniOper() {
-		return fechaIniOper;
-	}
-
-	public void setFechaIniOper(String fechaIniOper) {
-		this.fechaIniOper = fechaIniOper;
-	}
-
-	public int getEstadoCine() {
-		return estadoCine;
-	}
-
-	public void setEstadoCine(int estadoCine) {
-		this.estadoCine = estadoCine;
-	}
-
+	
 }

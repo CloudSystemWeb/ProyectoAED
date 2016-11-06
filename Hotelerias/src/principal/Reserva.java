@@ -397,7 +397,6 @@ public class Reserva extends JFrame implements ActionListener {
 
 	void procesar() {
 		switch (cboOpciones.getSelectedIndex()) {
-
 		case 0:
 			ingresar();
 			break;

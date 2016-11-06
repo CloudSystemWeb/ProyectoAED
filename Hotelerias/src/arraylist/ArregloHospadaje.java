@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import clases.Cliente;
 import clases.Hospedajes;
 
 public class ArregloHospadaje {
