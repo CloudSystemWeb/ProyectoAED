@@ -64,6 +64,7 @@ public class MenuPrincipal extends JFrame implements ActionListener, Runnable {
 	 * Create the frame.
 	 */
 	public MenuPrincipal() {
+		setTitle("Sistema de Gestion de Cines");
 		setBounds(100, 100, 1089, 785);
 
 		JMenuBar menuBar = new JMenuBar();
