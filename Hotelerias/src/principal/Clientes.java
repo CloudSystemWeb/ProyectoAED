@@ -52,7 +52,7 @@ public class Clientes extends JDialog implements ActionListener {
 	private JLabel lblCdigo;
 	private JLabel lblNombre;
 	private JLabel lblApellido;
-	private JLabel lblTeléfono;
+	private JLabel lblDireccion;
 	private JLabel lblEstado;
 	private JTextField txtCodigo;
 	private JTextField txtNombre;
@@ -110,93 +110,105 @@ public class Clientes extends JDialog implements ActionListener {
 
 		{
 			lblCdigo = new JLabel("C\u00F3digo");
+			lblCdigo.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblCdigo.setForeground(new Color(0, 0, 0));
 			lblCdigo.setIcon(new ImageIcon(Clientes.class.getResource("/imagenes/icono139.gif")));
-			lblCdigo.setBounds(20, 105, 78, 14);
+			lblCdigo.setBounds(20, 105, 105, 14);
 			getContentPane().add(lblCdigo);
 		}
 		{
 			lblNombre = new JLabel("Nombre");
+			lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblNombre.setBackground(Color.PINK);
-			lblNombre.setForeground(Color.PINK);
-			lblNombre.setBounds(20, 139, 46, 14);
+			lblNombre.setForeground(Color.BLACK);
+			lblNombre.setBounds(20, 139, 105, 14);
 			getContentPane().add(lblNombre);
 		}
 		{
 			lblApellido = new JLabel("Apellido");
+			lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblApellido.setBackground(Color.PINK);
-			lblApellido.setForeground(Color.PINK);
-			lblApellido.setBounds(20, 178, 46, 14);
+			lblApellido.setForeground(Color.BLACK);
+			lblApellido.setBounds(20, 178, 105, 14);
 			getContentPane().add(lblApellido);
 		}
 		{
-			lblTeléfono = new JLabel("Direccion");
-			lblTeléfono.setForeground(Color.PINK);
-			lblTeléfono.setBounds(20, 213, 67, 14);
-			getContentPane().add(lblTeléfono);
+			lblDireccion = new JLabel("Direccion");
+			lblDireccion.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblDireccion.setForeground(Color.BLACK);
+			lblDireccion.setBounds(20, 213, 105, 14);
+			getContentPane().add(lblDireccion);
 		}
 		{
 			lblEstado = new JLabel("Estado Civil");
-			lblEstado.setForeground(Color.PINK);
-			lblEstado.setBounds(20, 299, 67, 14);
+			lblEstado.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblEstado.setForeground(Color.BLACK);
+			lblEstado.setBounds(20, 335, 105, 14);
 			getContentPane().add(lblEstado);
 		}
 		{
 			txtCodigo = new JTextField();
+			txtCodigo.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtCodigo.setBackground(Color.WHITE);
-			txtCodigo.setBounds(108, 102, 86, 20);
+			txtCodigo.setBounds(167, 102, 156, 20);
 			getContentPane().add(txtCodigo);
 			txtCodigo.setColumns(10);
 			txtCodigo.setText("" + c.codigoMayor(contador));
 		}
 		{
 			txtNombre = new JTextField();
+			txtNombre.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtNombre.setBackground(Color.WHITE);
 			txtNombre.addActionListener(this);
-			txtNombre.setBounds(72, 136, 156, 20);
+			txtNombre.setBounds(167, 136, 156, 20);
 			getContentPane().add(txtNombre);
 			txtNombre.setColumns(10);
 			SLetras(txtNombre);
 		}
 		{
 			txtApellido = new JTextField();
+			txtApellido.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtApellido.setBackground(Color.WHITE);
 			txtApellido.addActionListener(this);
-			txtApellido.setBounds(72, 175, 156, 20);
+			txtApellido.setBounds(167, 175, 156, 20);
 			getContentPane().add(txtApellido);
 			txtApellido.setColumns(10);
 			SLetras(txtApellido);
 		}
 		{
 			txtDirec = new JTextField();
+			txtDirec.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtDirec.setBackground(Color.WHITE);
 			txtDirec.addActionListener(this);
-			txtDirec.setBounds(72, 206, 156, 20);
+			txtDirec.setBounds(167, 210, 156, 20);
 			getContentPane().add(txtDirec);
 			txtDirec.setColumns(10);
-			SNumeros(txtDirec);
+			
 		}
 		{
 			cbbEstado = new JComboBox();
+			cbbEstado.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			cbbEstado.setForeground(new Color(160, 82, 45));
 			cbbEstado.setModel(new DefaultComboBoxModel(new String[] { "Soltero", "Casado", "Viudo", "Divorsiado" }));
-			cbbEstado.setBounds(94, 295, 134, 22);
+			cbbEstado.setBounds(167, 331, 156, 22);
 			getContentPane().add(cbbEstado);
 		}
 		{
 			lblOpciones = new JLabel("Opciones");
-			lblOpciones.setForeground(Color.PINK);
-			lblOpciones.setBounds(20, 440, 75, 14);
+			lblOpciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblOpciones.setForeground(Color.BLACK);
+			lblOpciones.setBounds(20, 550, 105, 14);
 			getContentPane().add(lblOpciones);
 		}
 		{
 			cbbOpciones = new JComboBox();
+			cbbOpciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			cbbOpciones.setBackground(new Color(169, 169, 169));
 			cbbOpciones.setForeground(new Color(128, 0, 0));
 			cbbOpciones.addActionListener(this);
 			cbbOpciones.setModel(new DefaultComboBoxModel(
 					new String[] { "Ingresar", "Consultar", "Modificar", "Eliminar", "Listar" }));
-			cbbOpciones.setBounds(94, 437, 134, 22);
+			cbbOpciones.setBounds(167, 546, 156, 22);
 			getContentPane().add(cbbOpciones);
 		}
 		{
@@ -211,7 +223,7 @@ public class Clientes extends JDialog implements ActionListener {
 		}
 		{
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(361, 61, 625, 452);
+			scrollPane.setBounds(367, 105, 629, 546);
 			getContentPane().add(scrollPane);
 			{
 				txtS = new JTextArea();
@@ -232,76 +244,90 @@ public class Clientes extends JDialog implements ActionListener {
 		}
 
 		txtNac = new JTextField();
+		txtNac.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		txtNac.setColumns(10);
 		txtNac.setBackground(Color.WHITE);
-		txtNac.setBounds(72, 238, 156, 20);
+		txtNac.setBounds(167, 249, 156, 20);
 		getContentPane().add(txtNac);
 
 		txtTelefono = new JTextField();
+		txtTelefono.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		txtTelefono.setColumns(10);
 		txtTelefono.setBackground(Color.WHITE);
-		txtTelefono.setBounds(72, 324, 156, 20);
+		txtTelefono.setBounds(167, 381, 156, 20);
 		getContentPane().add(txtTelefono);
+		SNumeros(txtTelefono);
 
 		txtDNI = new JTextField();
+		txtDNI.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		txtDNI.setColumns(10);
 		txtDNI.setBackground(Color.WHITE);
-		txtDNI.setBounds(72, 352, 156, 20);
+		txtDNI.setBounds(167, 422, 156, 20);
+		SNumeros(txtDNI);
 		getContentPane().add(txtDNI);
 		{
 			lblUsuario = new JLabel("Usuario");
-			lblUsuario.setForeground(Color.PINK);
-			lblUsuario.setBounds(20, 383, 67, 14);
+			lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblUsuario.setForeground(Color.BLACK);
+			lblUsuario.setBounds(20, 462, 105, 14);
 			getContentPane().add(lblUsuario);
 		}
 		{
 			txtUsuario = new JTextField();
+			txtUsuario.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtUsuario.setColumns(10);
 			txtUsuario.setBackground(Color.WHITE);
-			txtUsuario.setBounds(72, 383, 156, 20);
+			txtUsuario.setBounds(167, 459, 156, 20);
 			getContentPane().add(txtUsuario);
 		}
 		{
 			lblContrasea = new JLabel("Clave");
-			lblContrasea.setForeground(Color.PINK);
-			lblContrasea.setBounds(20, 411, 63, 14);
+			lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblContrasea.setForeground(Color.BLACK);
+			lblContrasea.setBounds(20, 501, 105, 14);
 			getContentPane().add(lblContrasea);
 		}
 		{
 			txtContraseña = new JTextField();
+			txtContraseña.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtContraseña.setColumns(10);
 			txtContraseña.setBackground(Color.WHITE);
-			txtContraseña.setBounds(72, 408, 156, 20);
+			txtContraseña.setBounds(167, 498, 156, 20);
 			getContentPane().add(txtContraseña);
 		}
 		{
 			lblNaci = new JLabel("Fec-Nac");
-			lblNaci.setForeground(Color.PINK);
-			lblNaci.setBounds(10, 241, 46, 14);
+			lblNaci.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblNaci.setForeground(Color.BLACK);
+			lblNaci.setBounds(20, 252, 105, 14);
 			getContentPane().add(lblNaci);
 		}
 		{
 			lblafili = new JLabel("Fec-afil");
-			lblafili.setForeground(Color.PINK);
-			lblafili.setBounds(20, 270, 46, 14);
+			lblafili.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblafili.setForeground(Color.BLACK);
+			lblafili.setBounds(20, 294, 105, 14);
 			getContentPane().add(lblafili);
 		}
 
 		txtafili = new JTextField();
+		txtafili.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		txtafili.setBackground(Color.WHITE);
-		txtafili.setBounds(72, 269, 156, 20);
+		txtafili.setBounds(167, 291, 156, 20);
 		getContentPane().add(txtafili);
 		txtafili.setColumns(10);
 		{
 			lblDni = new JLabel("DNI");
-			lblDni.setForeground(Color.PINK);
-			lblDni.setBounds(16, 355, 46, 14);
+			lblDni.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblDni.setForeground(Color.BLACK);
+			lblDni.setBounds(20, 425, 105, 14);
 			getContentPane().add(lblDni);
 		}
 		{
 			lblTelefono = new JLabel("Telefono");
-			lblTelefono.setForeground(Color.PINK);
-			lblTelefono.setBounds(20, 324, 46, 14);
+			lblTelefono.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblTelefono.setForeground(Color.BLACK);
+			lblTelefono.setBounds(24, 384, 101, 14);
 			getContentPane().add(lblTelefono);
 		}
 		
@@ -558,6 +584,12 @@ public class Clientes extends JDialog implements ActionListener {
 		txtApellido.setText("");
 		txtNombre.setText("");
 		txtDirec.setText("");
+		txtDNI.setText("");
+		txtNac.setText("");
+		txtUsuario.setText("");
+		txtContraseña.setText("");
+		txtafili.setText("");
+		txtTelefono.setText("");
 		txtNombre.requestFocus();
 	}
 
@@ -578,7 +610,7 @@ public class Clientes extends JDialog implements ActionListener {
 		if (opcion == 0 || opcion == 2) {
 			lblNombre.setVisible(true);
 			lblApellido.setVisible(true);
-			lblTeléfono.setVisible(true);
+			lblDireccion.setVisible(true);
 			lblEstado.setVisible(true);
 			txtNombre.setVisible(true);
 			txtApellido.setVisible(true);
@@ -604,7 +636,7 @@ public class Clientes extends JDialog implements ActionListener {
 		} else if (opcion == 1 || opcion == 3) {
 			lblNombre.setVisible(false);
 			lblApellido.setVisible(false);
-			lblTeléfono.setVisible(false);
+			lblDireccion.setVisible(false);
 			lblEstado.setVisible(false);
 			txtNombre.setVisible(false);
 			txtApellido.setVisible(false);
@@ -621,7 +653,7 @@ public class Clientes extends JDialog implements ActionListener {
 			lblContrasea.setVisible(false);
 			lblEstado.setVisible(false);
 			txtNac.setVisible(false);
-			lblTeléfono.setVisible(false);
+			lblDireccion.setVisible(false);
 			lblEstado.setVisible(false);
 
 			lblNaci.setVisible(false);
@@ -633,7 +665,7 @@ public class Clientes extends JDialog implements ActionListener {
 		} else {
 			lblNombre.setVisible(false);
 			lblApellido.setVisible(false);
-			lblTeléfono.setVisible(false);
+			lblDireccion.setVisible(false);
 			lblEstado.setVisible(false);
 			txtNombre.setVisible(false);
 			txtApellido.setVisible(false);
@@ -649,7 +681,7 @@ public class Clientes extends JDialog implements ActionListener {
 			lblUsuario.setVisible(false);
 			lblContrasea.setVisible(false);
 			lblEstado.setVisible(false);
-			lblTeléfono.setVisible(false);
+			lblDireccion.setVisible(false);
 			lblEstado.setVisible(false);
 
 			lblNaci.setVisible(false);

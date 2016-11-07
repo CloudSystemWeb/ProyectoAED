@@ -15,30 +15,15 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
-
-import javax.swing.JSeparator;
-
-import java.awt.Component;
-
-import javax.swing.Box;
-
 import java.awt.Color;
-
-import javax.swing.JList;
-
 import java.awt.Font;
-
-import javax.swing.SwingConstants;
-
 import clases.*;
 import arraylist.ArregloReserva;
 
-import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
 public class Reserva extends JFrame implements ActionListener {
@@ -51,7 +36,6 @@ public class Reserva extends JFrame implements ActionListener {
 	private JLabel lblCdigoHabitacin;
 	private JLabel lblFechaRegistro;
 	private JLabel lblFechaSalida;
-	private JLabel lblFechaIngreso;
 	private JTextField txtCodigoReserva;
 	static JTextField txtCodigoCliente;
 	static JTextField txtCodigoEmpleado;
@@ -65,9 +49,6 @@ public class Reserva extends JFrame implements ActionListener {
 	private JComboBox cboOpciones;
 	private JScrollPane scrollPane;
 	private JTextField txtFechaRegistro;
-	private JComboBox cboDias;
-	private JComboBox cboMeses;
-	private JComboBox cboAnos;
 	private JTextArea txtS;
 
 	int contador;
@@ -128,7 +109,7 @@ public class Reserva extends JFrame implements ActionListener {
 		{
 			lblFechaRegistro = new JLabel("Fecha Registro");
 			lblFechaRegistro.setForeground(Color.RED);
-			lblFechaRegistro.setBounds(283, 14, 87, 14);
+			lblFechaRegistro.setBounds(283, 44, 87, 14);
 			getContentPane().add(lblFechaRegistro);
 		}
 		{
@@ -136,12 +117,6 @@ public class Reserva extends JFrame implements ActionListener {
 			lblFechaSalida.setForeground(Color.RED);
 			lblFechaSalida.setBounds(283, 78, 87, 14);
 			getContentPane().add(lblFechaSalida);
-		}
-		{
-			lblFechaIngreso = new JLabel("Fecha");
-			lblFechaIngreso.setForeground(Color.RED);
-			lblFechaIngreso.setBounds(283, 47, 87, 14);
-			getContentPane().add(lblFechaIngreso);
 		}
 		{
 			txtCodigoReserva = new JTextField();
@@ -185,16 +160,16 @@ public class Reserva extends JFrame implements ActionListener {
 			btnProcesar = new JButton("<html><p>Procesar</p></html>");
 			btnProcesar.setForeground(Color.BLUE);
 			btnProcesar.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnProcesar.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/procesar.gif")));
+			btnProcesar.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/procesar.png")));
 			btnProcesar.addActionListener(this);
-			btnProcesar.setBounds(595, 11, 115, 45);
+			btnProcesar.setBounds(595, 11, 115, 47);
 			getContentPane().add(btnProcesar);
 		}
 		{
 			btnSalir = new JButton("");
 			btnSalir.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnSalir.setForeground(Color.BLUE);
-			btnSalir.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/cancelar.png")));
 			btnSalir.addActionListener(this);
 			btnSalir.setBounds(595, 73, 115, 47);
 			getContentPane().add(btnSalir);
@@ -247,7 +222,7 @@ public class Reserva extends JFrame implements ActionListener {
 			txtFechaRegistro = new JTextField();
 			txtFechaRegistro.setBackground(Color.WHITE);
 			txtFechaRegistro.setEditable(false);
-			txtFechaRegistro.setBounds(410, 11, 118, 20);
+			txtFechaRegistro.setBounds(410, 38, 118, 20);
 			getContentPane().add(txtFechaRegistro);
 			txtFechaRegistro.setColumns(10);
 			txtFechaRegistro.setText("" + fechaactual());
@@ -255,31 +230,7 @@ public class Reserva extends JFrame implements ActionListener {
 
 		}
 		{
-			cboDias = new JComboBox();
-			cboDias.setModel(new DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "04", "06", "07", "08",
-					"09", "01", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
-					"25", "26", "27", "28", "29", "30", "31" }));
-			cboDias.setBounds(380, 44, 51, 20);
-			getContentPane().add(cboDias);
-		}
-		{
-			cboMeses = new JComboBox();
-			cboMeses.setModel(new DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril ", "Mayo",
-					"Juni ", "Julio", "Agosto", "Agosto", "Septiembre", "Octubre", "Diciembre" }));
-			cboMeses.setBounds(431, 44, 87, 20);
-			getContentPane().add(cboMeses);
-		}
-		{
-			cboAnos = new JComboBox();
-			cboAnos.setModel(
-					new DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-			cboAnos.setBounds(518, 44, 68, 20);
-			getContentPane().add(cboAnos);
-		}
-		{
 			txtHoraReserva = new JTextField();
-			txtHoraReserva.setText("06/11/2016");
-			txtHoraReserva.setEditable(false);
 			txtHoraReserva.setBackground(Color.WHITE);
 			txtHoraReserva.setBounds(410, 70, 118, 20);
 			getContentPane().add(txtHoraReserva);
@@ -308,14 +259,8 @@ public class Reserva extends JFrame implements ActionListener {
 		if (arg0.getSource() == btnBuscar_1) {
 			do_btnBuscar_1_actionPerformed(arg0);
 		}
-		limpiarFechas();
 	}
 
-	void limpiarFechas() {
-		cboAnos.setSelectedIndex(0);
-		cboDias.setSelectedIndex(0);
-		cboMeses.setSelectedIndex(0);
-	}
 
 	protected void do_btnBuscar_1_actionPerformed(ActionEvent arg0) {
 		CodigoCliente cliente = new CodigoCliente();
@@ -387,7 +332,7 @@ public class Reserva extends JFrame implements ActionListener {
 		if (a.tamano() > 0) {
 			txtS.setText("\t\t REGISTRO DE DATOS DE LOS RESERVA " + "\n");
 			imprimir(
-					"Código Reserva \t Código Cliente \t Código Cajera \t\t Código Recepci. \t Número Habita. \t Fecha Registro \t Fecha Ingreso \t\t Fecha Salida \t\t Estado Reser. ");
+					"Código Reserva \t Código Cliente \t Código Empleado \t Código Funcion. \t Fecha Registro. \t Hora Registro \t\t Estado. ");
 			for (int i = 0; i < a.tamano(); i++) {
 				Reservas reser = a.obtener(i);
 				imprimir(reser.getCodigoReserva() + "\t\t" + reser.getCodigoCliente() + "\t\t" + reser.getCodigoEmpleado()
@@ -455,28 +400,7 @@ public class Reserva extends JFrame implements ActionListener {
 		return cboOpciones.getSelectedIndex();
 	}
 
-	///// los combosss de fecha
 
-
-
-	public String leerDia1() {
-		return cboDias.getSelectedItem().toString();
-	}
-
-	public String leerMes1() {
-		return cboMeses.getSelectedItem().toString();
-	}
-
-	public String leerAno1() {
-		return cboAnos.getSelectedItem().toString();
-	}
-
-
-	public String leerFechaSalida() {
-		String m = null;
-		m = leerDia1() + "/" + leerMes1() + "/" + leerAno1();
-		return m;
-	}
 
 	public static String fechaactual() {
 		Date fecha = new Date();
@@ -517,7 +441,7 @@ public class Reserva extends JFrame implements ActionListener {
 	}
 
 	protected void do_btnBuscar_2_actionPerformed(ActionEvent arg0) {
-		CodigoCajera cajera = new CodigoCajera();
+		CodigoEmpleado cajera = new CodigoEmpleado();
 		cajera.setVisible(true);
 
 	}
@@ -533,27 +457,21 @@ public class Reserva extends JFrame implements ActionListener {
 			btnBuscar_2.setEnabled(true);
 			btnBuscar_3.setEnabled(true);
 			cboOpciones.setEnabled(true);
-			cboAnos.setEnabled(true);
-			cboMeses.setEnabled(true);
-			cboDias.setEnabled(true);
+
 		} else if (cboOpciones.getSelectedIndex() == 1) {
 			txtCodigoReserva.setEditable(true);
 			btnBuscar_1.setEnabled(false);
 			btnBuscar_2.setEnabled(false);
 			btnBuscar_3.setEnabled(false);
 			cboOpciones.setEnabled(false);
-			cboAnos.setEnabled(false);
-			cboMeses.setEnabled(false);
-			cboDias.setEnabled(false);
+
 		} else {
 			txtCodigoReserva.setEditable(false);
 			btnBuscar_1.setEnabled(false);
 			btnBuscar_2.setEnabled(false);
 			btnBuscar_3.setEnabled(false);
 			cboOpciones.setEnabled(false);
-			cboAnos.setEnabled(false);
-			cboMeses.setEnabled(false);
-			cboDias.setEnabled(false);
+
 			listar();
 		}
 	}
@@ -562,11 +480,6 @@ public class Reserva extends JFrame implements ActionListener {
 		anular();
 	}
 
-	/*void restricicon() {
-		if (leerCodigoHabitacion() == leerCodigoHabitacion()) {
-			mensaje("Habitación ya esta reservada");
-		}
-	}*/
 
 	public void SNumeros(JTextField a) {
 		a.addKeyListener(new KeyAdapter() {

@@ -8,7 +8,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import clases.Cliente;
-import clases.Recepcionista;
 
 public class ArregloCliente {
 	ArrayList<Cliente>clien;
@@ -41,7 +40,7 @@ public class ArregloCliente {
 	}
 	
 	public int codigoMayor(int cod){
-		int co=100001;
+		int co=10001;
 		for (Cliente c: clien){
 			if (c.getCodCliente()>cod)
 				co=c.getCodCliente()+1;

@@ -1,2 +1,1 @@
 100001;Cine;dasdsa;1;dasdsa;12/12/12;0
-100002;dasdsa;;;;;0

@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import clases.Empleado;
-import clases.Recepcionista;
+
 
 public class ArregloEmpleado {
 	ArrayList<Empleado> emple;
@@ -44,7 +44,7 @@ public class ArregloEmpleado {
 	}
 
 	public int codigoMayor(int cod) {
-		int co = 100;
+		int co = 10001;
 		for (Empleado c : emple) {
 			if (c.getCodEmpleado() > cod)
 				co = c.getCodEmpleado() + 1;

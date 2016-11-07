@@ -46,8 +46,8 @@ public class Butaca extends JDialog implements ActionListener {
 	// private JLabel lblFecNac1;
 
 	private JTextArea txtS;
-	private JDesktopPane desktopPane;
 	private JButton btnBuscarSala;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -73,120 +73,132 @@ public class Butaca extends JDialog implements ActionListener {
 		getContentPane().setForeground(new Color(106, 90, 205));
 		getContentPane().setBackground(new Color(245, 245, 245));
 		setTitle("REGISTRO DE BUTACAS");
-		setBounds(100, 100, 651, 457);
+		setBounds(100, 100, 1020, 730);
 		getContentPane().setLayout(null);
 
 		{
 			lblCdigo = new JLabel("C\u00F3digo");
+			lblCdigo.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblCdigo.setForeground(new Color(0, 0, 0));
 			lblCdigo.setIcon(new ImageIcon(Butaca.class.getResource("/imagenes/icono139.gif")));
-			lblCdigo.setBounds(10, 11, 78, 14);
+			lblCdigo.setBounds(10, 192, 109, 14);
 			getContentPane().add(lblCdigo);
 		}
 		{
 			lblNombre = new JLabel("Codigo Sala");
+			lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblNombre.setBackground(Color.PINK);
-			lblNombre.setForeground(Color.PINK);
-			lblNombre.setBounds(10, 45, 78, 14);
+			lblNombre.setForeground(Color.BLACK);
+			lblNombre.setBounds(10, 242, 102, 14);
 			getContentPane().add(lblNombre);
 		}
 		{
 			lblApellido = new JLabel("N\u00FAmero Fila");
+			lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblApellido.setBackground(Color.PINK);
-			lblApellido.setForeground(Color.PINK);
-			lblApellido.setBounds(10, 84, 78, 14);
+			lblApellido.setForeground(Color.BLACK);
+			lblApellido.setBounds(10, 288, 102, 14);
 			getContentPane().add(lblApellido);
 		}
 		{
 			lblTeléfono = new JLabel("N\u00FAmero Columna");
-			lblTeléfono.setForeground(Color.PINK);
-			lblTeléfono.setBounds(10, 119, 97, 14);
+			lblTeléfono.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblTeléfono.setForeground(Color.BLACK);
+			lblTeléfono.setBounds(10, 331, 132, 14);
 			getContentPane().add(lblTeléfono);
 		}
 		{
 			lblEstado = new JLabel("Tipo");
-			lblEstado.setForeground(Color.PINK);
-			lblEstado.setBounds(10, 148, 67, 14);
+			lblEstado.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblEstado.setForeground(Color.BLACK);
+			lblEstado.setBounds(10, 387, 77, 14);
 			getContentPane().add(lblEstado);
 		}
 		{
 			txtCodigoButaca = new JTextField();
+			txtCodigoButaca.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtCodigoButaca.setBackground(Color.WHITE);
-			txtCodigoButaca.setBounds(98, 8, 86, 20);
+			txtCodigoButaca.setBounds(152, 192, 159, 20);
 			getContentPane().add(txtCodigoButaca);
 			txtCodigoButaca.setColumns(10);
 			txtCodigoButaca.setText("" + c.codigoMayor(contador));
 		}
 		{
 			txtCodigoSala = new JTextField();
+			txtCodigoSala.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtCodigoSala.setEditable(false);
 			txtCodigoSala.setBackground(Color.WHITE);
 			txtCodigoSala.addActionListener(this);
-			txtCodigoSala.setBounds(117, 42, 73, 20);
+			txtCodigoSala.setBounds(152, 242, 159, 20);
 			getContentPane().add(txtCodigoSala);
 			txtCodigoSala.setColumns(10);
 			SNumeros(txtCodigoSala);
 		}
 		{
 			txtNumeroFila = new JTextField();
+			txtNumeroFila.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtNumeroFila.setBackground(Color.WHITE);
 			txtNumeroFila.addActionListener(this);
-			txtNumeroFila.setBounds(117, 81, 101, 20);
+			txtNumeroFila.setBounds(152, 288, 164, 20);
 			getContentPane().add(txtNumeroFila);
 			txtNumeroFila.setColumns(10);
 			SNumeros(txtNumeroFila);
 		}
 		{
 			txtNumeroColumna = new JTextField();
+			txtNumeroColumna.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtNumeroColumna.setBackground(Color.WHITE);
 			txtNumeroColumna.addActionListener(this);
-			txtNumeroColumna.setBounds(117, 112, 101, 20);
+			txtNumeroColumna.setBounds(152, 331, 164, 20);
 			getContentPane().add(txtNumeroColumna);
 			txtNumeroColumna.setColumns(10);
 			SNumeros(txtNumeroColumna);
 		}
 		{
 			cboTipo = new JComboBox();
+			cboTipo.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			cboTipo.setForeground(new Color(160, 82, 45));
 			cboTipo.setModel(new DefaultComboBoxModel(new String[] {"Reservada", "Disponible"}));
-			cboTipo.setBounds(84, 144, 134, 22);
+			cboTipo.setBounds(150, 386, 166, 22);
 			getContentPane().add(cboTipo);
 		}
 		{
 			lblOpciones = new JLabel("Opciones");
-			lblOpciones.setForeground(Color.PINK);
-			lblOpciones.setBounds(10, 346, 75, 14);
+			lblOpciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblOpciones.setForeground(Color.BLACK);
+			lblOpciones.setBounds(10, 453, 87, 14);
 			getContentPane().add(lblOpciones);
 		}
 		{
 			cbbOpciones = new JComboBox();
+			cbbOpciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			cbbOpciones.setBackground(new Color(169, 169, 169));
 			cbbOpciones.setForeground(new Color(128, 0, 0));
 			cbbOpciones.addActionListener(this);
 			cbbOpciones.setModel(new DefaultComboBoxModel(
 					new String[] { "Ingresar", "Consultar", "Modificar", "Eliminar", "Listar" }));
-			cbbOpciones.setBounds(84, 343, 134, 22);
+			cbbOpciones.setBounds(152, 445, 164, 22);
 			getContentPane().add(cbbOpciones);
 		}
 		{
-			btnProcesar = new JButton("Procesar");
+			btnProcesar = new JButton("");
 			btnProcesar.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnProcesar.setBackground(new Color(169, 169, 169));
 			btnProcesar.setForeground(new Color(0, 0, 205));
-			btnProcesar.setIcon(new ImageIcon(Butaca.class.getResource("/imagenes/procesar.gif")));
+			btnProcesar.setIcon(new ImageIcon(Butaca.class.getResource("/imagenes/procesar.png")));
 			btnProcesar.addActionListener(this);
-			btnProcesar.setBounds(10, 376, 122, 32);
+			btnProcesar.setBounds(23, 583, 115, 47);
 			getContentPane().add(btnProcesar);
 		}
 		{
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(271, 11, 354, 327);
+			scrollPane.setBounds(368, 148, 626, 533);
 			getContentPane().add(scrollPane);
 			{
 				txtS = new JTextArea();
+				scrollPane.setViewportView(txtS);
 				txtS.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
 				txtS.setBackground(new Color(253, 245, 230));
-				scrollPane.setViewportView(txtS);
 			}
 		}
 		{
@@ -194,24 +206,23 @@ public class Butaca extends JDialog implements ActionListener {
 			btnSalir.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnSalir.setBackground(new Color(169, 169, 169));
 			btnSalir.setForeground(new Color(0, 0, 205));
-			btnSalir.setIcon(new ImageIcon(Butaca.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(Butaca.class.getResource("/imagenes/cancelar.png")));
 			btnSalir.addActionListener(this);
-			btnSalir.setBounds(139, 376, 122, 32);
+			btnSalir.setBounds(152, 583, 115, 47);
 			getContentPane().add(btnSalir);
-		}
-
-		{
-			desktopPane = new JDesktopPane();
-			desktopPane.setBackground(Color.RED);
-			desktopPane.setBounds(241, 9, 17, 361);
-			getContentPane().add(desktopPane);
 		}
 		{
 			btnBuscarSala = new JButton("");
 			btnBuscarSala.setIcon(new ImageIcon(Butaca.class.getResource("/imagenes/lupa.png")));
 			btnBuscarSala.addActionListener(this);
-			btnBuscarSala.setBounds(186, 41, 51, 22);
+			btnBuscarSala.setBounds(307, 241, 51, 22);
 			getContentPane().add(btnBuscarSala);
+		}
+		{
+			lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon(Butaca.class.getResource("/imagenes/registrobutacas.png")));
+			lblNewLabel.setBounds(0, 0, 1004, 692);
+			getContentPane().add(lblNewLabel);
 		}
 		codigo();
 		listar();

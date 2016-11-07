@@ -37,9 +37,9 @@ import java.awt.Dimension;
 
 import javax.swing.JDesktopPane;
 
-import clases.Cliente;
+
 import clases.Empleado;
-import arraylist.ArregloCliente;
+
 import arraylist.ArregloEmpleado;
 
 public class Empleados extends JDialog implements ActionListener {
@@ -63,7 +63,6 @@ public class Empleados extends JDialog implements ActionListener {
 	// private JLabel lblFecNac1;
 
 	private JTextArea txtS;
-	private JDesktopPane desktopPane;
 	private JLabel lblUsuario;
 	private JTextField txtUsuario;
 	private JLabel lblContrasea;
@@ -92,105 +91,115 @@ public class Empleados extends JDialog implements ActionListener {
 	public Empleados() {
 		getContentPane().setForeground(new Color(106, 90, 205));
 		getContentPane().setBackground(new Color(245, 245, 245));
-		setTitle("REGISTRO DE LOS CLIENTES CLIENTES");
-		setBounds(100, 100, 651, 457);
+		setTitle("REGISTRO DE LOS EMPLEADOS");
+		setBounds(100, 100, 1020, 730);
 		getContentPane().setLayout(null);
 
 		{
 			lblCdigo = new JLabel("C\u00F3digo");
+			lblCdigo.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblCdigo.setForeground(new Color(0, 0, 0));
 			lblCdigo.setIcon(new ImageIcon(Empleados.class.getResource("/imagenes/icono139.gif")));
-			lblCdigo.setBounds(10, 11, 78, 14);
+			lblCdigo.setBounds(10, 131, 99, 14);
 			getContentPane().add(lblCdigo);
 		}
 		{
 			lblNombre = new JLabel("Nombre");
+			lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblNombre.setBackground(Color.PINK);
-			lblNombre.setForeground(Color.PINK);
-			lblNombre.setBounds(10, 45, 46, 14);
+			lblNombre.setForeground(Color.BLACK);
+			lblNombre.setBounds(37, 167, 86, 14);
 			getContentPane().add(lblNombre);
 		}
 		{
 			lblApellido = new JLabel("Apellido");
+			lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			lblApellido.setBackground(Color.PINK);
-			lblApellido.setForeground(Color.PINK);
-			lblApellido.setBounds(10, 84, 46, 14);
+			lblApellido.setForeground(Color.BLACK);
+			lblApellido.setBounds(37, 218, 99, 17);
 			getContentPane().add(lblApellido);
 		}
 		{
 			lblTipoEmpleado = new JLabel("Estado Civil");
-			lblTipoEmpleado.setForeground(Color.PINK);
-			lblTipoEmpleado.setBounds(10, 253, 67, 14);
+			lblTipoEmpleado.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblTipoEmpleado.setForeground(Color.BLACK);
+			lblTipoEmpleado.setBounds(23, 264, 99, 18);
 			getContentPane().add(lblTipoEmpleado);
 		}
 		{
 			txtCodigo = new JTextField();
+			txtCodigo.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtCodigo.setBackground(Color.WHITE);
-			txtCodigo.setBounds(98, 8, 86, 20);
+			txtCodigo.setBounds(133, 128, 181, 20);
 			getContentPane().add(txtCodigo);
 			txtCodigo.setColumns(10);
 			txtCodigo.setText("" + c.codigoMayor(contador));
 		}
 		{
 			txtNombre = new JTextField();
+			txtNombre.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtNombre.setBackground(Color.WHITE);
 			txtNombre.addActionListener(this);
-			txtNombre.setBounds(62, 42, 156, 20);
+			txtNombre.setBounds(133, 167, 181, 20);
 			getContentPane().add(txtNombre);
 			txtNombre.setColumns(10);
 			SLetras(txtNombre);
 		}
 		{
 			txtApellido = new JTextField();
+			txtApellido.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtApellido.setBackground(Color.WHITE);
 			txtApellido.addActionListener(this);
-			txtApellido.setBounds(62, 81, 156, 20);
+			txtApellido.setBounds(133, 215, 181, 20);
 			getContentPane().add(txtApellido);
 			txtApellido.setColumns(10);
 			SLetras(txtApellido);
 		}
 		{
 			cbbEstado = new JComboBox();
+			cbbEstado.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			cbbEstado.setForeground(new Color(160, 82, 45));
 			cbbEstado.setModel(new DefaultComboBoxModel(new String[] { "Administrador\t", "Supervisor\t", "Cajero" }));
-			cbbEstado.setBounds(84, 249, 134, 22);
+			cbbEstado.setBounds(133, 260, 181, 22);
 			getContentPane().add(cbbEstado);
 		}
 		{
 			lblOpciones = new JLabel("Opciones");
-			lblOpciones.setForeground(Color.PINK);
-			lblOpciones.setBounds(10, 346, 75, 14);
+			lblOpciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblOpciones.setForeground(Color.BLACK);
+			lblOpciones.setBounds(37, 400, 99, 18);
 			getContentPane().add(lblOpciones);
 		}
 		{
 			cbbOpciones = new JComboBox();
+			cbbOpciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			cbbOpciones.setBackground(new Color(169, 169, 169));
 			cbbOpciones.setForeground(new Color(128, 0, 0));
 			cbbOpciones.addActionListener(this);
 			cbbOpciones.setModel(new DefaultComboBoxModel(
 					new String[] { "Ingresar", "Consultar", "Modificar", "Eliminar", "Listar" }));
-			cbbOpciones.setBounds(84, 343, 134, 22);
+			cbbOpciones.setBounds(133, 398, 181, 22);
 			getContentPane().add(cbbOpciones);
 		}
 		{
-			btnProcesar = new JButton("Procesar");
+			btnProcesar = new JButton("");
 			btnProcesar.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnProcesar.setBackground(new Color(169, 169, 169));
 			btnProcesar.setForeground(new Color(0, 0, 205));
-			btnProcesar.setIcon(new ImageIcon(Empleados.class.getResource("/imagenes/procesar.gif")));
+			btnProcesar.setIcon(new ImageIcon(Empleados.class.getResource("/imagenes/procesar.png")));
 			btnProcesar.addActionListener(this);
-			btnProcesar.setBounds(10, 376, 122, 32);
+			btnProcesar.setBounds(53, 509, 115, 47);
 			getContentPane().add(btnProcesar);
 		}
 		{
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(271, 11, 354, 327);
+			scrollPane.setBounds(375, 110, 619, 554);
 			getContentPane().add(scrollPane);
 			{
 				txtS = new JTextArea();
+				scrollPane.setViewportView(txtS);
 				txtS.setFont(new Font("Lucida Bright", Font.PLAIN, 13));
 				txtS.setBackground(new Color(253, 245, 230));
-				scrollPane.setViewportView(txtS);
 			}
 		}
 		{
@@ -198,44 +207,46 @@ public class Empleados extends JDialog implements ActionListener {
 			btnSalir.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnSalir.setBackground(new Color(169, 169, 169));
 			btnSalir.setForeground(new Color(0, 0, 205));
-			btnSalir.setIcon(new ImageIcon(Empleados.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(Empleados.class.getResource("/imagenes/cancelar.png")));
 			btnSalir.addActionListener(this);
-			btnSalir.setBounds(139, 376, 122, 32);
+			btnSalir.setBounds(199, 509, 115, 47);
 			getContentPane().add(btnSalir);
-		}
-
-		{
-			desktopPane = new JDesktopPane();
-			desktopPane.setBackground(Color.RED);
-			desktopPane.setBounds(228, 11, 17, 361);
-			getContentPane().add(desktopPane);
 		}
 		{
 			lblUsuario = new JLabel("Usuario");
-			lblUsuario.setForeground(Color.PINK);
-			lblUsuario.setBounds(10, 289, 67, 14);
+			lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblUsuario.setForeground(Color.BLACK);
+			lblUsuario.setBounds(37, 311, 99, 17);
 			getContentPane().add(lblUsuario);
 		}
 		{
 			txtUsuario = new JTextField();
+			txtUsuario.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtUsuario.setColumns(10);
 			txtUsuario.setBackground(Color.WHITE);
-			txtUsuario.setBounds(62, 286, 156, 20);
+			txtUsuario.setBounds(133, 308, 181, 20);
 			getContentPane().add(txtUsuario);
 		}
 		{
 			lblContrasea = new JLabel("Clave");
-			lblContrasea.setForeground(Color.PINK);
-			lblContrasea.setBounds(10, 317, 63, 14);
+			lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			lblContrasea.setForeground(Color.BLACK);
+			lblContrasea.setBounds(36, 355, 87, 14);
 			getContentPane().add(lblContrasea);
 		}
 		{
 			txtContraseña = new JTextField();
+			txtContraseña.setFont(new Font("Tahoma", Font.PLAIN, 17));
 			txtContraseña.setColumns(10);
 			txtContraseña.setBackground(Color.WHITE);
-			txtContraseña.setBounds(62, 314, 156, 20);
+			txtContraseña.setBounds(133, 355, 181, 20);
 			getContentPane().add(txtContraseña);
 		}
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Empleados.class.getResource("/imagenes/registroempleado.png")));
+		lblNewLabel.setBounds(0, 0, 1004, 692);
+		getContentPane().add(lblNewLabel);
 		codigo();
 		listar();
 	}
@@ -299,7 +310,7 @@ public class Empleados extends JDialog implements ActionListener {
 				txtCodigo.setText("" + c.codigoMayor(contador));
 
 				// mensaje de confirmación
-				JOptionPane.showMessageDialog(this, "Cliente Ingresado", "ALERTA", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Empleado Ingresado", "ALERTA", JOptionPane.WARNING_MESSAGE);
 
 			} else
 				mensaje("Código  ya existe");
@@ -334,9 +345,9 @@ public class Empleados extends JDialog implements ActionListener {
 		try {
 			imprimir();
 			if (c.tamaño() > 0) {
-				txtS.setText("\t\t REGISTRO DE DATOS DE LOS CLIENTES " + "\n");
+				txtS.setText("\t\t REGISTRO DE DATOS DE LOS EMPLEADOS " + "\n");
 				imprimir(
-						"Código \t Nombres \t Apellidos \t Direccion \t Fecha Nac \t Fecha Afil \t Estado Civil \tTeléfono \t DNI \t Usuario \t Contraseña");
+						"Código \t Nombres \t Apellidos \t Tipo Empleado \t  Usuario \t Contraseña");
 				imprimir("");
 				for (int i = 0; i < c.tamaño(); i++) {
 					Empleado clien = c.obtener(i);
@@ -345,9 +356,9 @@ public class Empleados extends JDialog implements ActionListener {
 							+ clien.getContraseña());
 				}
 				imprimir("");
-				imprimir("Total de Clientes : " + c.tamaño());
+				imprimir("Total de Empleados : " + c.tamaño());
 			} else
-				imprimir("No hay Clientes.......");
+				imprimir("No hay Empleados.......");
 		} catch (Exception e) {
 			mensaje("Ingrese Datos");
 		}
@@ -366,7 +377,7 @@ public class Empleados extends JDialog implements ActionListener {
 			imprimir(" k) Contraseña  : " + clien.getContraseña());
 
 		} else
-			JOptionPane.showMessageDialog(null, "Cliente no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Empleado no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
 	}
 
 	void modificar() {
@@ -383,10 +394,10 @@ public class Empleados extends JDialog implements ActionListener {
 				clien.setContraseña(leerContraseña());
 
 				listar();
-				// mensaje que muestre que el cliente ha sido modificado
-				JOptionPane.showMessageDialog(null, "Cliente Modificado", "ALERTA", JOptionPane.INFORMATION_MESSAGE);
+				// mensaje que muestre que el empleado ha sido modificado
+				JOptionPane.showMessageDialog(null, "Empleado Modificado", "ALERTA", JOptionPane.INFORMATION_MESSAGE);
 			} else
-				JOptionPane.showMessageDialog(null, "Cliente no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Empleado no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -395,10 +406,10 @@ public class Empleados extends JDialog implements ActionListener {
 		if (clien != null) {
 			c.eliminar(clien);
 			listar();
-			// mensaje que muestre que el cliente ha sido eliminado
-			JOptionPane.showMessageDialog(null, "Cliente Eliminado", "ALERTA", JOptionPane.WARNING_MESSAGE);
+			// mensaje que muestre que el Empleado ha sido eliminado
+			JOptionPane.showMessageDialog(null, "Empleado Eliminado", "ALERTA", JOptionPane.WARNING_MESSAGE);
 		} else
-			JOptionPane.showMessageDialog(null, "Cliente no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Empleado no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
 
 	}
 

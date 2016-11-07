@@ -1,36 +1,43 @@
 package principal;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.KeyEvent;
+import java.awt.Color;
+import java.awt.EventQueue;
 
-import arraylist.ArregloFuncion;
-public class CodigoFuncion extends JDialog implements ActionListener, MouseListener {
-	
-	ArregloFuncion c = new ArregloFuncion("Funcion.txt");
+import javax.swing.ImageIcon;
+
+
+import arraylist.ArregloEmpleado;
+
+import java.awt.SystemColor;
+
+public class CodigoEmpleado extends JDialog implements ActionListener, MouseListener {
+
+
+	ArregloEmpleado c = new ArregloEmpleado("Empleado.txt");
 	
 	private JButton btnListar;
 	private JButton btnSalir;
 	private JScrollPane scrollPane;
 	
 	public DefaultTableModel dtm;	
-	String cabecera[] = {"Código","Cine","Sala","Fecha Funcion","Hora Funcion"};
+	String cabecera[] = {"Código","Nombre","Apellidos","Tipo Empleado","Usuario", "Contraseña"};
 	private JTable tabla;
 	private JTextField txtCodigo;
 	private JButton btnBuscar;
@@ -46,7 +53,7 @@ public class CodigoFuncion extends JDialog implements ActionListener, MouseListe
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CodigoFuncion dialog = new CodigoFuncion();
+					CodigoEmpleado dialog = new CodigoEmpleado();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
@@ -59,8 +66,8 @@ public class CodigoFuncion extends JDialog implements ActionListener, MouseListe
 	/**
 	 * Create the dialog.
 	 */
-	public CodigoFuncion() {
-		setTitle("C\u00D3DIGOS DE FUNCION");
+	public CodigoEmpleado() {
+		setTitle("C\u00D3DIGOS DE EMPLEADOS");
 		setBounds(100, 100, 589, 302);
 		{
 			btnListar = new JButton("Listar");
@@ -71,7 +78,7 @@ public class CodigoFuncion extends JDialog implements ActionListener, MouseListe
 		}
 		{
 			btnSalir = new JButton("Salir");
-			btnSalir.setIcon(new ImageIcon(CodigoFuncion.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(CodigoEmpleado.class.getResource("/imagenes/exit_button.gif")));
 			btnSalir.setBounds(461, 12, 102, 23);
 			btnSalir.addActionListener(this);
 			getContentPane().add(btnSalir);
@@ -117,7 +124,7 @@ public class CodigoFuncion extends JDialog implements ActionListener, MouseListe
 		}
 		{
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(CodigoFuncion.class.getResource("/imagenes/the-desktop-hd-Windows-7-Black-wallpapers (1).jpeg")));
+			label.setIcon(new ImageIcon(CodigoEmpleado.class.getResource("/imagenes/the-desktop-hd-Windows-7-Black-wallpapers (1).jpeg")));
 			label.setBounds(0, 0, 573, 263);
 			getContentPane().add(label);
 		}
@@ -141,29 +148,29 @@ public class CodigoFuncion extends JDialog implements ActionListener, MouseListe
 	void listar(){
 		if(c.tamaño()>0){
 			for(int i=0; i<c.tamaño(); i++){
-				clases.Funcion clien=c.obtener(i);
-				Object datos [] = {clien.getCodFuncion(),clien.getCodCine(),clien.getCodSala(),
-						clien.getCodPelicula(),clien.getFecha(),clien.getHora()};
+				clases.Empleado clien=c.obtener(i);
+				Object datos [] = {clien.getCodEmpleado(),clien.getNombreEmpleado(),clien.getApellidoEmpleado(),
+						clien.getTipoEmpleado(),clien.getUsuario(),clien.getContraseña()};
 				dtm.addRow(datos);
 				}
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "No hay Funcion","MENSAJE",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "No hay Empleados","MENSAJE",JOptionPane.ERROR_MESSAGE);
 	   }
 	}	
 	void consultar(){
 		try{
-		clases.Funcion clien=c.buscar(leerCodigo());
+		clases.Empleado clien=c.buscar(leerCodigo());
 		if(clien!=null){
-			Object datos [] = {clien.getCodFuncion(),clien.getCodCine(),clien.getCodSala(),
-					clien.getCodPelicula(),clien.getFecha(),clien.getHora()};
+			Object datos [] = {clien.getCodEmpleado(),clien.getNombreEmpleado(),clien.getApellidoEmpleado(),
+					clien.getTipoEmpleado(),clien.getUsuario(),clien.getContraseña()};
 				dtm.addRow(datos);
 				
-				mensaje("Funcion Encontrado");
+				mensaje("Empleado Encontrado");
 				txtCodigo.requestFocus();
 		}
 		else
-		JOptionPane.showMessageDialog(null, "Funcion no existe","ALERTA",JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Empleado no existe","ALERTA",JOptionPane.ERROR_MESSAGE);
 		txtCodigo.requestFocus();
 	}catch(Exception e){
 		mensaje("Ingrese Un Código");
@@ -179,7 +186,7 @@ public class CodigoFuncion extends JDialog implements ActionListener, MouseListe
 		try{
 		String dato;
 		dato=txtCodigo.getText();
-		Reserva.txtCodigoFuncion.setText(dato);
+		Reserva.txtCodigoEmpleado.setText(dato);
 		this.dispose();
 		}catch(Exception e){
 			this.dispose();
@@ -243,4 +250,9 @@ public class CodigoFuncion extends JDialog implements ActionListener, MouseListe
 	
 	public void SLetras(JTextField a){
 	}
+	
+	
+	
+	
+	
 }

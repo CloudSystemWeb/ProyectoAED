@@ -25,12 +25,12 @@ import javax.swing.ImageIcon;
 import clases.Cliente;
 import clases.Habitacion;
 import clases.Hospedajes;
-import clases.Recepcionista;
+
 import clases.Reservas;
 import arraylist.ArregloCliente;
 import arraylist.ArregloHabitacion;
 import arraylist.ArregloHospadaje;
-import arraylist.ArregloRecepcionista;
+
 import arraylist.ArregloReserva;
 
 import java.awt.Color;
@@ -39,7 +39,7 @@ import java.util.ArrayList;
 public class Consultas extends JDialog implements ActionListener {
 
 	ArregloHospadaje o = new ArregloHospadaje("Hospedaje.txt");
-	ArregloRecepcionista r = new ArregloRecepcionista("Recepcionista.txt");
+
 	ArregloHabitacion h = new ArregloHabitacion("Habitaciones.txt");
 	ArregloReserva re = new ArregloReserva("Reserva.txt");
 

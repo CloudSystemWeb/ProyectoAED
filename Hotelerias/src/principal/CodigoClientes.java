@@ -47,7 +47,6 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 import clases.Cliente;
-import clases.Recepcionista;
 import arraylist.ArregloCliente;
 
 import java.awt.SystemColor;

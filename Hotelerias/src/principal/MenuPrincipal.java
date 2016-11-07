@@ -122,7 +122,7 @@ public class MenuPrincipal extends JFrame implements ActionListener, Runnable {
 		mnReserva.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		menuBar.add(mnReserva);
 		{
-			mntmReservarHabitacin = new JMenuItem("INICIAR RESERVA HABITACI\u00D3N");
+			mntmReservarHabitacin = new JMenuItem("INICIAR RESERVA");
 			mntmReservarHabitacin.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/icono_buscar.gif")));
 			mntmReservarHabitacin.addActionListener(this);
 			mnReserva.add(mntmReservarHabitacin);

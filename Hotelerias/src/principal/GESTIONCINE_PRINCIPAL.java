@@ -17,7 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener {
+public class GESTIONCINE_PRINCIPAL extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
 	private JLabel lblUsuario;
@@ -33,7 +33,7 @@ public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener
 	 */
 	public static void main(String[] args) {
 		try {
-			GESTIONHOTELERA_PRINCIPAL dialog = new GESTIONHOTELERA_PRINCIPAL();
+			GESTIONCINE_PRINCIPAL dialog = new GESTIONCINE_PRINCIPAL();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -44,8 +44,8 @@ public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener
 	/**
 	 * Create the dialog.
 	 */
-	public GESTIONHOTELERA_PRINCIPAL() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/7.jpg")));
+	public GESTIONCINE_PRINCIPAL() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GESTIONCINE_PRINCIPAL.class.getResource("/imagenes/7.jpg")));
 		setTitle("Sistema de Gestion de Cines");
 		setBounds(100, 100, 700, 500);
 		getContentPane().setLayout(new BorderLayout());
@@ -81,7 +81,7 @@ public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener
 		{
 			btnIngresar = new JButton("");
 			btnIngresar.setBackground(Color.WHITE);
-			btnIngresar.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/entrar.png")));
+			btnIngresar.setIcon(new ImageIcon(GESTIONCINE_PRINCIPAL.class.getResource("/imagenes/entrar.png")));
 			btnIngresar.addActionListener(this);
 			btnIngresar.setForeground(new Color(0, 0, 255));
 			btnIngresar.setBounds(521, 148, 115, 47);
@@ -89,7 +89,7 @@ public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener
 		}
 		{
 			btnSalir = new JButton("");
-			btnSalir.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/cancelar.png")));
+			btnSalir.setIcon(new ImageIcon(GESTIONCINE_PRINCIPAL.class.getResource("/imagenes/cancelar.png")));
 			btnSalir.addActionListener(this);
 			btnSalir.setForeground(Color.BLUE);
 			btnSalir.setBounds(521, 216, 115, 47);
@@ -97,7 +97,7 @@ public class GESTIONHOTELERA_PRINCIPAL extends JDialog implements ActionListener
 		}
 		{
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(GESTIONHOTELERA_PRINCIPAL.class.getResource("/imagenes/Loing.png")));
+			label.setIcon(new ImageIcon(GESTIONCINE_PRINCIPAL.class.getResource("/imagenes/Loing.png")));
 			label.setBounds(0, 0, 684, 462);
 			contentPanel.add(label);
 		}
