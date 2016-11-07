@@ -39,6 +39,8 @@ public class MenuPrincipal extends JFrame implements ActionListener, Runnable {
 	private JMenuItem mntmCine;
 	private JMenuItem mntmSala;
 	private JMenuItem mntmButaca;
+	private JMenuItem mntmFuncion;
+	private JMenuItem mntmPelicula;
 	private JMenuItem mntmSalir;
 	private JMenu mnReserva;
 	private JMenuItem mntmReservarHabitacin;
@@ -102,6 +104,17 @@ public class MenuPrincipal extends JFrame implements ActionListener, Runnable {
 		mntmButaca.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/buscar.png")));
 		mntmButaca.addActionListener(this);
 		mnMantenimiento.add(mntmButaca);
+		
+		mntmFuncion = new JMenuItem("Registrar Función");
+		mntmFuncion.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/buscar.png")));
+		mntmFuncion.addActionListener(this);
+		mnMantenimiento.add(mntmFuncion);
+		
+		mntmPelicula = new JMenuItem("Registrar Película");
+		mntmPelicula.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/buscar.png")));
+		mntmPelicula.addActionListener(this);
+		mnMantenimiento.add(mntmPelicula);
+	
 
 		mnReserva = new JMenu("Reserva");
 		mnReserva.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/procesar.gif")));
@@ -189,8 +202,20 @@ public class MenuPrincipal extends JFrame implements ActionListener, Runnable {
 		if (e.getSource() == mntmButaca) {
 			do_mntmButaca_actionPerformed(e);
 		}
+		if (e.getSource() == mntmFuncion) {
+			do_mntmFuncion_actionPerformed(e);
+		}
+		if (e.getSource() == mntmPelicula) {
+			do_mntmPelicula_actionPerformed(e);
+		}
 	}
 
+	protected void do_mntmPelicula_actionPerformed(ActionEvent e) {
+		new Peliculas().setVisible(true);
+	}
+	protected void do_mntmFuncion_actionPerformed(ActionEvent e) {
+		new Funcion().setVisible(true);
+	}
 	protected void do_mntmButaca_actionPerformed(ActionEvent e) {
 		new Butaca().setVisible(true);
 	}

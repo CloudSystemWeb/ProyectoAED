@@ -34,7 +34,7 @@ public class Butaca extends JDialog implements ActionListener {
 	private JLabel lblTeléfono;
 	private JLabel lblEstado;
 	private JTextField txtCodigoButaca;
-	private JTextField txtCodigoSala;
+	static JTextField txtCodigoSala;
 	private JTextField txtNumeroFila;
 	private JTextField txtNumeroColumna;
 	private JComboBox cboTipo;
@@ -47,6 +47,7 @@ public class Butaca extends JDialog implements ActionListener {
 
 	private JTextArea txtS;
 	private JDesktopPane desktopPane;
+	private JButton btnBuscarSala;
 
 	/**
 	 * Launch the application.
@@ -71,7 +72,7 @@ public class Butaca extends JDialog implements ActionListener {
 	public Butaca() {
 		getContentPane().setForeground(new Color(106, 90, 205));
 		getContentPane().setBackground(new Color(245, 245, 245));
-		setTitle("REGISTRO DE LOS CLIENTES CLIENTES");
+		setTitle("REGISTRO DE BUTACAS");
 		setBounds(100, 100, 651, 457);
 		getContentPane().setLayout(null);
 
@@ -118,9 +119,10 @@ public class Butaca extends JDialog implements ActionListener {
 		}
 		{
 			txtCodigoSala = new JTextField();
+			txtCodigoSala.setEditable(false);
 			txtCodigoSala.setBackground(Color.WHITE);
 			txtCodigoSala.addActionListener(this);
-			txtCodigoSala.setBounds(117, 42, 101, 20);
+			txtCodigoSala.setBounds(117, 42, 73, 20);
 			getContentPane().add(txtCodigoSala);
 			txtCodigoSala.setColumns(10);
 			SNumeros(txtCodigoSala);
@@ -201,8 +203,15 @@ public class Butaca extends JDialog implements ActionListener {
 		{
 			desktopPane = new JDesktopPane();
 			desktopPane.setBackground(Color.RED);
-			desktopPane.setBounds(228, 11, 17, 361);
+			desktopPane.setBounds(241, 9, 17, 361);
 			getContentPane().add(desktopPane);
+		}
+		{
+			btnBuscarSala = new JButton("");
+			btnBuscarSala.setIcon(new ImageIcon(Butaca.class.getResource("/imagenes/lupa.png")));
+			btnBuscarSala.addActionListener(this);
+			btnBuscarSala.setBounds(186, 41, 51, 22);
+			getContentPane().add(btnBuscarSala);
 		}
 		codigo();
 		listar();
@@ -222,9 +231,18 @@ public class Butaca extends JDialog implements ActionListener {
 		if (arg0.getSource() == this.btnProcesar) {
 			do_btnProcesar_actionPerformed(arg0);
 		}
+		if (arg0.getSource() == this.btnBuscarSala) {
+			do_btnBuscarSala_actionPerformed(arg0);
+		}
 		limpiar();
 	}
 
+	protected void do_btnBuscarSala_actionPerformed(ActionEvent arg0) {
+		CodigoSala cine = new CodigoSala();
+		cine.setVisible(true);
+	}
+
+	
 	protected void do_btnProcesar_actionPerformed(ActionEvent arg0) {
 		procesar();
 	}
@@ -441,6 +459,7 @@ public class Butaca extends JDialog implements ActionListener {
 			lblCdigo.setVisible(true);
 			txtNumeroColumna.setVisible(true);
 			txtCodigoButaca.setVisible(true);
+			btnBuscarSala.setVisible(true);
 			lblEstado.setVisible(true);
 		
 
@@ -455,7 +474,7 @@ public class Butaca extends JDialog implements ActionListener {
 			txtNumeroColumna.setVisible(false);
 			txtCodigoButaca.setVisible(true);
 			lblCdigo.setVisible(true);
-	
+			btnBuscarSala.setVisible(false);
 			lblEstado.setVisible(false);
 			lblTeléfono.setVisible(false);
 			lblEstado.setVisible(false);

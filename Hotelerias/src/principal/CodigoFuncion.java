@@ -20,18 +20,17 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import arraylist.ArregloCine;
-import clases.Cine;
-public class CodigoCine extends JDialog implements ActionListener, MouseListener {
+import arraylist.ArregloFuncion;
+public class CodigoFuncion extends JDialog implements ActionListener, MouseListener {
 	
-	ArregloCine c = new ArregloCine("Cine.txt");
+	ArregloFuncion c = new ArregloFuncion("Funcion.txt");
 	
 	private JButton btnListar;
 	private JButton btnSalir;
 	private JScrollPane scrollPane;
 	
 	public DefaultTableModel dtm;	
-	String cabecera[] = {"Código","Nombres","Departamento","Provincia","Distrito","Fecha","Tipo	"};
+	String cabecera[] = {"Código","Cine","Sala","Fecha Funcion","Hora Funcion"};
 	private JTable tabla;
 	private JTextField txtCodigo;
 	private JButton btnBuscar;
@@ -47,7 +46,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CodigoCine dialog = new CodigoCine();
+					CodigoFuncion dialog = new CodigoFuncion();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
@@ -60,7 +59,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 	/**
 	 * Create the dialog.
 	 */
-	public CodigoCine() {
+	public CodigoFuncion() {
 		setTitle("C\u00D3DIGOS DE CINE");
 		setBounds(100, 100, 589, 302);
 		{
@@ -72,7 +71,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		}
 		{
 			btnSalir = new JButton("Salir");
-			btnSalir.setIcon(new ImageIcon(CodigoCine.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(CodigoFuncion.class.getResource("/imagenes/exit_button.gif")));
 			btnSalir.setBounds(461, 12, 102, 23);
 			btnSalir.addActionListener(this);
 			getContentPane().add(btnSalir);
@@ -118,7 +117,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		}
 		{
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(CodigoCine.class.getResource("/imagenes/the-desktop-hd-Windows-7-Black-wallpapers (1).jpeg")));
+			label.setIcon(new ImageIcon(CodigoFuncion.class.getResource("/imagenes/the-desktop-hd-Windows-7-Black-wallpapers (1).jpeg")));
 			label.setBounds(0, 0, 573, 263);
 			getContentPane().add(label);
 		}
@@ -142,9 +141,9 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 	void listar(){
 		if(c.tamaño()>0){
 			for(int i=0; i<c.tamaño(); i++){
-				clases.Cine clien=c.obtener(i);
-				Object datos [] = {clien.getCodCine(),clien.getNombre(),clien.getDepartamento(),
-						clien.getProvincia(),clien.getDistrito(),clien.getFechaIniOper()};
+				clases.Funcion clien=c.obtener(i);
+				Object datos [] = {clien.getCodFuncion(),clien.getCodCine(),clien.getCodSala(),
+						clien.getCodPelicula(),clien.getFecha(),clien.getHora()};
 				dtm.addRow(datos);
 				}
 		}
@@ -154,10 +153,10 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 	}	
 	void consultar(){
 		try{
-		Cine clien=c.buscar(leerCodigo());
+		clases.Funcion clien=c.buscar(leerCodigo());
 		if(clien!=null){
-			Object datos [] = {clien.getCodCine(),clien.getNombre(),clien.getDepartamento(),
-					clien.getProvincia(),clien.getDistrito(),clien.getFechaIniOper(), clien.getEstadoCine()};
+			Object datos [] = {clien.getCodFuncion(),clien.getCodCine(),clien.getCodSala(),
+					clien.getCodPelicula(),clien.getFecha(),clien.getHora()};
 				dtm.addRow(datos);
 				
 				mensaje("Cine Encontrado");
@@ -180,7 +179,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		try{
 		String dato;
 		dato=txtCodigo.getText();
-		Salas.txtCodigoCine.setText(dato);
+		Reserva.txtCodigoFuncion.setText(dato);
 		this.dispose();
 		}catch(Exception e){
 			this.dispose();

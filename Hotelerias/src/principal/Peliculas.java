@@ -2,43 +2,27 @@ package principal;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDesktopPane;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-
-import javax.swing.SwingConstants;
-
-import java.awt.Font;
-
-import javax.swing.ImageIcon;
-
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
-import java.awt.Component;
-
-import javax.swing.Box;
-
-import java.awt.Dimension;
-
-import javax.swing.JDesktopPane;
-
-import clases.Pelicula;
 import arraylist.ArregloPelicula;
+import clases.Cliente;
+import clases.Pelicula;
 
 public class Peliculas extends JDialog implements ActionListener {
 
@@ -357,13 +341,25 @@ public class Peliculas extends JDialog implements ActionListener {
 			modificar();
 			break;
 		case 3:
-			//eliminar();
+			eliminar();
 			actulizaciones();
 			break;
 		default:
 			listar();
 			break;
 		}
+	}
+	
+	void eliminar() {
+		Pelicula clien = c.buscar(leerCod());
+		if (clien != null) {
+			c.eliminar(clien);
+			listar();
+			// mensaje que muestre que el cliente ha sido eliminado
+			JOptionPane.showMessageDialog(null, "Película Eliminado", "ALERTA", JOptionPane.WARNING_MESSAGE);
+		} else
+			JOptionPane.showMessageDialog(null, "Película no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
+
 	}
 
 	void ingresar() {
@@ -381,7 +377,7 @@ public class Peliculas extends JDialog implements ActionListener {
 				txtCodigo.setText("" + c.codigoMayor(contador));
 
 				// mensaje de confirmación
-				JOptionPane.showMessageDialog(this, "Cliente Ingresado", "ALERTA", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Película Ingresado", "ALERTA", JOptionPane.WARNING_MESSAGE);
 
 			} else
 				mensaje("Código  ya existe");
@@ -416,7 +412,7 @@ public class Peliculas extends JDialog implements ActionListener {
 		try {
 			imprimir();
 			if (c.tamaño() > 0) {
-				txtS.setText("\t\t REGISTRO DE DATOS DE LOS CLIENTES " + "\n");
+				txtS.setText("\t\t REGISTRO DE DATOS DE LOS Película " + "\n");
 				imprimir(
 						"Código \t Nombres \t Apellidos \t Direccion \t Fecha Nac \t Fecha Afil \t Estado Civil \tTeléfono \t DNI \t Usuario \t Contraseña");
 				imprimir("");

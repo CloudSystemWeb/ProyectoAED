@@ -21,23 +21,24 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import arraylist.ArregloButaca;
-import arraylist.ArregloSala;
+import arraylist.ArregloFuncion;
 import clases.Cine;
 
 
-public class Salas extends JDialog implements ActionListener {
-	ArregloSala c = new ArregloSala("Sala.txt");
+public class Funcion extends JDialog implements ActionListener {
+	ArregloFuncion c = new ArregloFuncion("Funcion.txt");
 	int contador;
  
 	private JLabel lblCdigo;
 	private JLabel lblNombre;
 	private JLabel lblApellido;
 	private JLabel lblTeléfono;
+	private JLabel lblHora;
 	private JLabel lblEstado;
-	private JTextField txtCodigoSala;
+	static JTextField txtCodigoFuncion;
 	static JTextField txtCodigoCine;
-	private JTextField txtNumeroSala;
-	private JTextField txtNumeroFilas;
+	static JTextField txtCodigoSala;
+	static JTextField txtCodigoPelicula;
 	private JLabel lblOpciones;
 	private JComboBox cbbOpciones;
 	private JButton btnProcesar;
@@ -47,8 +48,11 @@ public class Salas extends JDialog implements ActionListener {
 
 	private JTextArea txtS;
 	private JDesktopPane desktopPane;
-	private JTextField txtNumeroButacas;
-	private JButton button;
+	private JTextField txtFecha;
+	private JTextField txtHora;
+	private JButton btnCine;
+	private JButton btnSala;
+	private JButton btnPelicula;
 
 	/**
 	 * Launch the application.
@@ -57,7 +61,7 @@ public class Salas extends JDialog implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Salas dialog = new Salas();
+					Funcion dialog = new Funcion();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
@@ -70,17 +74,17 @@ public class Salas extends JDialog implements ActionListener {
 	/**
 	 * Create the dialog.
 	 */
-	public Salas() {
+	public Funcion() {
 		getContentPane().setForeground(new Color(106, 90, 205));
 		getContentPane().setBackground(new Color(245, 245, 245));
-		setTitle("REGISTRO DE SALAS");
+		setTitle("REGISTRO DE LA FUNCION");
 		setBounds(100, 100, 651, 457);
 		getContentPane().setLayout(null);
 
 		{
 			lblCdigo = new JLabel("C\u00F3digo");
 			lblCdigo.setForeground(new Color(0, 0, 0));
-			lblCdigo.setIcon(new ImageIcon(Salas.class.getResource("/imagenes/icono139.gif")));
+			lblCdigo.setIcon(new ImageIcon(Funcion.class.getResource("/imagenes/icono139.gif")));
 			lblCdigo.setBounds(10, 11, 78, 14);
 			getContentPane().add(lblCdigo);
 		}
@@ -92,59 +96,61 @@ public class Salas extends JDialog implements ActionListener {
 			getContentPane().add(lblNombre);
 		}
 		{
-			lblApellido = new JLabel("N\u00FAmero Sala");
+			lblApellido = new JLabel("Codigo Sala");
 			lblApellido.setBackground(Color.PINK);
 			lblApellido.setForeground(Color.PINK);
 			lblApellido.setBounds(10, 84, 78, 14);
 			getContentPane().add(lblApellido);
 		}
 		{
-			lblTeléfono = new JLabel("N\u00FAmero Filas");
+			lblTeléfono = new JLabel("Codigo Pel\u00EDcula");
 			lblTeléfono.setForeground(Color.PINK);
 			lblTeléfono.setBounds(10, 119, 97, 14);
 			getContentPane().add(lblTeléfono);
 		}
 		{
-			lblEstado = new JLabel("N\u00FAmero Butacas");
+			lblEstado = new JLabel("Fecha");
 			lblEstado.setForeground(Color.PINK);
-			lblEstado.setBounds(10, 148, 97, 14);
+			lblEstado.setBounds(10, 148, 67, 14);
 			getContentPane().add(lblEstado);
 		}
 		{
-			txtCodigoSala = new JTextField();
-			txtCodigoSala.setBackground(Color.WHITE);
-			txtCodigoSala.setBounds(98, 8, 86, 20);
-			getContentPane().add(txtCodigoSala);
-			txtCodigoSala.setColumns(10);
-			txtCodigoSala.setText("" + c.codigoMayor(contador));
+			txtCodigoFuncion = new JTextField();
+			txtCodigoFuncion.setBackground(Color.WHITE);
+			txtCodigoFuncion.setBounds(98, 8, 86, 20);
+			getContentPane().add(txtCodigoFuncion);
+			txtCodigoFuncion.setColumns(10);
+			txtCodigoFuncion.setText("" + c.codigoMayor(contador));
 		}
 		{
 			txtCodigoCine = new JTextField();
+			txtCodigoCine.setEditable(false);
 			txtCodigoCine.setBackground(Color.WHITE);
 			txtCodigoCine.addActionListener(this);
-			txtCodigoCine.setEditable(false);
-			txtCodigoCine.setBounds(117, 42, 75, 20);
+			txtCodigoCine.setBounds(117, 42, 78, 20);
 			getContentPane().add(txtCodigoCine);
 			txtCodigoCine.setColumns(10);
 			SNumeros(txtCodigoCine);
 		}
 		{
-			txtNumeroSala = new JTextField();
-			txtNumeroSala.setBackground(Color.WHITE);
-			txtNumeroSala.addActionListener(this);
-			txtNumeroSala.setBounds(117, 81, 101, 20);
-			getContentPane().add(txtNumeroSala);
-			txtNumeroSala.setColumns(10);
-			SNumeros(txtNumeroSala);
+			txtCodigoSala = new JTextField();
+			txtCodigoSala.setEditable(false);
+			txtCodigoSala.setBackground(Color.WHITE);
+			txtCodigoSala.addActionListener(this);
+			txtCodigoSala.setBounds(117, 81, 78, 20);
+			getContentPane().add(txtCodigoSala);
+			txtCodigoSala.setColumns(10);
+			SNumeros(txtCodigoSala);
 		}
 		{
-			txtNumeroFilas = new JTextField();
-			txtNumeroFilas.setBackground(Color.WHITE);
-			txtNumeroFilas.addActionListener(this);
-			txtNumeroFilas.setBounds(117, 112, 101, 20);
-			getContentPane().add(txtNumeroFilas);
-			txtNumeroFilas.setColumns(10);
-			SNumeros(txtNumeroFilas);
+			txtCodigoPelicula = new JTextField();
+			txtCodigoPelicula.setEditable(false);
+			txtCodigoPelicula.setBackground(Color.WHITE);
+			txtCodigoPelicula.addActionListener(this);
+			txtCodigoPelicula.setBounds(117, 112, 78, 20);
+			getContentPane().add(txtCodigoPelicula);
+			txtCodigoPelicula.setColumns(10);
+			SNumeros(txtCodigoPelicula);
 		}
 		{
 			lblOpciones = new JLabel("Opciones");
@@ -167,7 +173,7 @@ public class Salas extends JDialog implements ActionListener {
 			btnProcesar.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnProcesar.setBackground(new Color(169, 169, 169));
 			btnProcesar.setForeground(new Color(0, 0, 205));
-			btnProcesar.setIcon(new ImageIcon(Salas.class.getResource("/imagenes/procesar.gif")));
+			btnProcesar.setIcon(new ImageIcon(Funcion.class.getResource("/imagenes/procesar.gif")));
 			btnProcesar.addActionListener(this);
 			btnProcesar.setBounds(10, 376, 122, 32);
 			getContentPane().add(btnProcesar);
@@ -188,7 +194,7 @@ public class Salas extends JDialog implements ActionListener {
 			btnSalir.setFont(new Font("Tahoma", Font.BOLD, 14));
 			btnSalir.setBackground(new Color(169, 169, 169));
 			btnSalir.setForeground(new Color(0, 0, 205));
-			btnSalir.setIcon(new ImageIcon(Salas.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(Funcion.class.getResource("/imagenes/exit_button.gif")));
 			btnSalir.addActionListener(this);
 			btnSalir.setBounds(139, 376, 122, 32);
 			getContentPane().add(btnSalir);
@@ -200,20 +206,65 @@ public class Salas extends JDialog implements ActionListener {
 			desktopPane.setBounds(244, 11, 17, 361);
 			getContentPane().add(desktopPane);
 		}
-		{
-			txtNumeroButacas = new JTextField();
-			txtNumeroButacas.setColumns(10);
-			txtNumeroButacas.setBackground(Color.WHITE);
-			txtNumeroButacas.setBounds(117, 145, 101, 20);
-			getContentPane().add(txtNumeroButacas);
-			SNumeros(txtNumeroButacas);
-		}
 		
-		button = new JButton("");
-		button.addActionListener(this);
-		button.setIcon(new ImageIcon(Salas.class.getResource("/imagenes/lupa.png")));
-		button.setBounds(190, 41, 51, 22);
-		getContentPane().add(button);
+		txtFecha = new JTextField();
+		txtFecha.setColumns(10);
+		txtFecha.setBackground(Color.WHITE);
+		txtFecha.setBounds(117, 145, 101, 20);
+		getContentPane().add(txtFecha);
+		
+		txtHora = new JTextField();
+		txtHora.setColumns(10);
+		txtHora.setBackground(Color.WHITE);
+		txtHora.setBounds(117, 176, 101, 20);
+		getContentPane().add(txtHora);
+		
+		lblHora = new JLabel("Hora");
+		lblHora.setForeground(Color.PINK);
+		lblHora.setBounds(10, 179, 67, 14);
+		getContentPane().add(lblHora);
+		{
+			btnCine = new JButton("");
+			btnCine.addActionListener(this);
+			btnCine.setIcon(new ImageIcon(Funcion.class.getResource("/imagenes/lupa.png")));
+			btnCine.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					CodigoCine2  cine =new CodigoCine2();
+					cine.setVisible(true);
+				}
+			});
+			btnCine.setBounds(191, 41, 51, 22);
+			getContentPane().add(btnCine);
+		}
+		{
+			btnSala = new JButton("");
+			btnSala.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					CodigoSala2 cine = new CodigoSala2();
+					cine.setVisible(true);
+				}
+			});
+			btnSala.setIcon(new ImageIcon(Funcion.class.getResource("/imagenes/lupa.png")));
+			btnCine.addActionListener(this);
+			btnSala.setBounds(191, 80, 51, 22);
+			getContentPane().add(btnSala);
+		}
+		{
+			btnPelicula = new JButton("");
+			btnPelicula.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					CodigoPelicula cine = new CodigoPelicula();
+					cine.setVisible(true);
+				}
+			});
+			btnPelicula.setIcon(new ImageIcon(Funcion.class.getResource("/imagenes/lupa.png")));
+			btnPelicula.setBounds(191, 111, 51, 22);
+			btnCine.addActionListener(this);
+			getContentPane().add(btnPelicula);
+		}
 		codigo();
 		listar();
 	}
@@ -229,21 +280,16 @@ public class Salas extends JDialog implements ActionListener {
 		if (arg0.getSource() == this.btnProcesar) {
 			do_btnProcesar_actionPerformed(arg0);
 		}
-		if (arg0.getSource() == this.btnProcesar) {
-			do_btnProcesar_actionPerformed(arg0);
+		
+		/*if (arg0.getSource() == this.btnSala) {
+			do_btnSala_actionPerformed(arg0);
 		}
-		if (arg0.getSource() == this.button) {
-			do_btnBuscar_Cine_actionPerformed(arg0);
-		}
+		if (arg0.getSource() == this.btnPelicula) {
+			do_btnPelicula_actionPerformed(arg0);
+		}*/
 		limpiar();
 	}
 
-	protected void do_btnBuscar_Cine_actionPerformed(ActionEvent arg0) {
-		CodigoCine cine = new CodigoCine();
-		cine.setVisible(true);
-
-	}
-	
 	protected void do_btnProcesar_actionPerformed(ActionEvent arg0) {
 		procesar();
 	}
@@ -273,22 +319,23 @@ public class Salas extends JDialog implements ActionListener {
 
 	void ingresar() {
 		if (String.valueOf(leerCod()).equals("") && String.valueOf(leerCodigoCine()).equals("")
-				&& String.valueOf(leerNumeroFilas()).equals("") 
-				&& String.valueOf(leerNumeroSala()).equals("")) {
+				&& String.valueOf(leerCodigoSala()).equals("") 
+				&& String.valueOf(leerCodigoPelicula()).equals("")
+				&& leerFecha().equals("") && leerHora().equals("")) {
 			mensaje("POR FAVOR INGRESE LOS DATOS CORRECTAMENTE");
 			txtCodigoCine.requestFocus();
 		} else {
-			clases.Sala clien = c.buscar(leerCod());
+			clases.Funcion clien = c.buscar(leerCod());
 			if (clien == null) {
 				//int codButaca, int codSala, int numeroFilas, int numeroColumna, int estadoButaca)
-				clien = new clases.Sala(leerCod(), leerCodigoCine(), leerNumeroSala(), leerNumeroFilas(),
-						leerNumeroButaca());
+				clien = new clases.Funcion(leerCod(), leerCodigoCine(), leerCodigoSala(), leerCodigoPelicula(),
+						leerFecha(),leerHora());
 				c.adicionar(clien);
 				listar();
-				txtCodigoSala.setText("" + c.codigoMayor(contador));
+				txtCodigoFuncion.setText("" + c.codigoMayor(contador));
 
 				// mensaje de confirmación
-				JOptionPane.showMessageDialog(this, "Sala Ingresado", "ALERTA", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Funcion Ingresado", "ALERTA", JOptionPane.WARNING_MESSAGE);
 
 			} else
 				mensaje("Código  ya existe");
@@ -297,14 +344,14 @@ public class Salas extends JDialog implements ActionListener {
 
 	public void actulizaciones() {
 
-		if (c.existeSala()) {
+		if (c.existebutacate()) {
 			int ok = 0;
 			if (ok == 0) {
-				c.grabarSala();
+				c.grabarbutacates();
 			} else
-				c.getSala();
+				c.getfuncion();
 		} else {
-			c.grabarSala();
+			c.grabarbutacates();
 		}
 	}
 
@@ -322,78 +369,80 @@ public class Salas extends JDialog implements ActionListener {
 	void listar() {
 		try {
 			imprimir();
-			if (c.tamano() > 0) {
-				txtS.setText("\t\t REGISTRO DE DATOS DE LOS BUTACA " + "\n");
+			if (c.tamaño() > 0) {
+				txtS.setText("\t\t REGISTRO DE DATOS DE LOS FUNCION " + "\n");
 				imprimir(
-						"Código \t Cine \t numeroColumna \t numeroFilas \t Butacas");
+						"Código \t Cine \t Sala \t Pelícuala \t Fecha \t Hora");
 				imprimir("");
-				for (int i = 0; i < c.tamano(); i++) {
-					clases.Sala clien = c.obtener(i);
-					imprimir(clien.getCodSala() + "\t" + clien.getCodCine() + "\t"
-							+ clien.getNumeroSala() + "\t" + clien.getNumeroFilas() + "\t\t"
-							+ clien.getNumeroButacas()) ;
+				for (int i = 0; i < c.tamaño(); i++) {
+					clases.Funcion clien = c.obtener(i);
+					imprimir(clien.getCodFuncion() + "\t" + clien.getCodCine() + "\t"
+							+ clien.getCodSala() + "\t" + clien.getCodPelicula() + "\t\t"
+							+ clien.getFecha() + "\t\t" + clien.getHora()) ;
 				imprimir("");
-				if(c.tamano()-1==i){
-					imprimir("Total de Butaca : " + c.tamano());	
+				if(c.tamaño()-1 == i){
+					imprimir("Total de Función : " + c.tamaño());	
 				}
 				}
 			} else
-				imprimir("No hay Butaca.......");
+				imprimir("No hay Función.......");
 		} catch (Exception e) {
 			mensaje("Ingrese Datos");
 		}
 	}
 
 	void consultar() {
-		clases.Sala clien = c.buscar(leerCod());
+		clases.Funcion clien = c.buscar(leerCod());
 		if (clien != null) {
 			imprimir();
 			imprimir(" \t REGISTRO DE DATOS" + "\n");
-			imprimir(" a) Código          : " + clien.getCodSala());
-			imprimir(" b) Cine      : " + clien.getCodCine());
-			imprimir(" c) Número Sala  : " + clien.getNumeroSala());
-			imprimir(" d) Número Filas   : " + clien.getNumeroFilas());
-			imprimir(" e) Número Butacas   : " + clien.getNumeroButacas());
+			imprimir(" a) Código          : " + clien.getCodFuncion());
+			imprimir(" b) Cisne      : " + clien.getCodCine());
+			imprimir(" c) Sala  : " + clien.getCodSala());
+			imprimir(" d) Película   : " + clien.getCodPelicula());
+			imprimir(" e) Fecha    : " + clien.getFecha());
+			imprimir(" e) Hora    : " + clien.getHora());
 		
 			
 
 		} else
-			JOptionPane.showMessageDialog(null, "Butaca no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Función no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
 	}
 
 	void modificar() {
-		if (String.valueOf(leerCod()).equals("") && String.valueOf(leerNumeroButaca()).equals("")
-				&& String.valueOf(leerNumeroSala()).equals("") 
-				&& String.valueOf(leerNumeroFilas()).equals("")
-				&& String.valueOf(leerCodCine()).equals("")) {
+		if (String.valueOf(leerCod()).equals("") && String.valueOf(leerCodigoCine()).equals("")
+				&& String.valueOf(leerCodigoSala()).equals("") 
+				&& String.valueOf(leerCodigoPelicula()).equals("")
+				&& leerFecha().equals("") && leerHora().equals("")) {
 			mensaje("POR FAVOR INGRESE LOS DATOS CORRECTAMENTE");
 			txtCodigoCine.requestFocus();
 		} else {
-			clases.Sala clien = c.buscar(leerCod());
+			clases.Funcion clien = c.buscar(leerCod());
 			if (clien != null) {
-				clien.setCodSala(leerCod());
-				clien.setCodCine(leerCodCine());
-				clien.setNumeroSala(leerNumeroSala());
-				clien.setNumeroFilas(leerNumeroFilas());
-				clien.setNumeroButacas(leerNumeroButaca());
-			
+				clien.setCodFuncion(leerCod());
+				clien.setCodCine(leerCodigoCine());
+				clien.setCodSala(leerCodigoSala());
+				clien.setCodPelicula(leerCodigoPelicula());
+				clien.setFecha(leerFecha());
+				clien.setHora(leerHora());
+				
 				listar();
 				// mensaje que muestre que el cliente ha sido modificado
-				JOptionPane.showMessageDialog(null, "Butaca Modificado", "ALERTA", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Función Modificado", "ALERTA", JOptionPane.INFORMATION_MESSAGE);
 			} else
-				JOptionPane.showMessageDialog(null, "Butaca no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Función no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	void eliminar() {
-		clases.Sala clien = c.buscar(leerCod());
+		clases.Funcion clien = c.buscar(leerCod());
 		if (clien != null) {
 			c.eliminar(clien);
 			listar();
 			// mensaje que muestre que el cliente ha sido eliminado
-			JOptionPane.showMessageDialog(null, "Sala Eliminado", "ALERTA", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Función Eliminado", "ALERTA", JOptionPane.WARNING_MESSAGE);
 		} else
-			JOptionPane.showMessageDialog(null, "Sala no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Función no existe", "ALERTA", JOptionPane.ERROR_MESSAGE);
 
 	}
 
@@ -416,31 +465,31 @@ public class Salas extends JDialog implements ActionListener {
 		return Integer.parseInt(txtCodigoCine.getText().toString());
 	}
 	
-	public int leerNumeroFilas() {
-		return Integer.parseInt(txtNumeroFilas.getText().toString());
+	public int leerCodigoSala() {
+		return Integer.parseInt(txtCodigoSala.getText().toString());
 	}
 
-	public int leerNumeroSala() {
-		return Integer.parseInt(txtNumeroSala.getText().toString());
+	public int leerCodigoPelicula() {
+		return Integer.parseInt(txtCodigoPelicula.getText().toString());
 	}
-	
-	public int leerNumeroButaca() {
-		return Integer.parseInt(txtNumeroButacas.getText().toString());
+
+	public String leerFecha() {
+		return txtFecha.getText().toString();
 	}
-	
-	public int leerCodCine() {
-		return Integer.parseInt(txtCodigoSala.getText());
+	public String leerHora() {
+		return txtHora.getText().toString();
 	}
 
 	public int leerCod() {
-		return Integer.parseInt(txtCodigoSala.getText());
+		return Integer.parseInt(txtCodigoFuncion.getText());
 	}
 
 	public void limpiar() {
-		txtNumeroSala.setText("");
+		txtCodigoSala.setText("");
 		txtCodigoCine.setText("");
-		txtNumeroFilas.setText("");
-		txtNumeroButacas.setText("");
+		txtCodigoPelicula.setText("");
+		txtFecha.setText("");
+		txtHora.setText("");
 		txtCodigoCine.requestFocus();
 	}
 
@@ -464,13 +513,17 @@ public class Salas extends JDialog implements ActionListener {
 			lblTeléfono.setVisible(true);
 			lblEstado.setVisible(true);
 			txtCodigoCine.setVisible(true);
-			txtNumeroSala.setVisible(true);
-			lblCdigo.setVisible(true);
-			txtNumeroFilas.setVisible(true);
 			txtCodigoSala.setVisible(true);
+			lblCdigo.setVisible(true);
+			txtCodigoPelicula.setVisible(true);
+			txtCodigoFuncion.setVisible(true);
 			lblEstado.setVisible(true);
-			button.setVisible(true);
-			txtNumeroButacas.setVisible(true);
+			lblHora.setVisible(true);
+			txtFecha.setVisible(true);
+			txtHora.setVisible(true);
+			btnCine.setVisible(true);
+			btnSala.setVisible(true);
+			btnPelicula.setVisible(true);
 		
 
 		} else if (opcion == 1 || opcion == 3) {
@@ -479,17 +532,20 @@ public class Salas extends JDialog implements ActionListener {
 			lblTeléfono.setVisible(false);
 			lblEstado.setVisible(false);
 			txtCodigoCine.setVisible(false);
-			txtNumeroSala.setVisible(false);
-			txtNumeroFilas.setVisible(false);
-			button.setVisible(false);
-			txtCodigoSala.setVisible(true);
+			txtCodigoSala.setVisible(false);
+			txtCodigoPelicula.setVisible(false);
+			txtCodigoFuncion.setVisible(true);
 			lblCdigo.setVisible(true);
-			txtNumeroButacas.setVisible(false);
 	
 			lblEstado.setVisible(false);
 			lblTeléfono.setVisible(false);
 			lblEstado.setVisible(false);
-			button.setVisible(false);
+			txtFecha.setVisible(false);
+			txtHora.setVisible(false);
+			lblHora.setVisible(false);
+			btnCine.setVisible(false);
+			btnSala.setVisible(false);
+			btnPelicula.setVisible(false);
 		
 
 		} else {
@@ -498,16 +554,17 @@ public class Salas extends JDialog implements ActionListener {
 			lblTeléfono.setVisible(false);
 			lblEstado.setVisible(false);
 			txtCodigoCine.setVisible(false);
-			txtNumeroSala.setVisible(false);
-			txtNumeroButacas.setVisible(false);
-			txtNumeroFilas.setVisible(false);
 			txtCodigoSala.setVisible(false);
+			txtCodigoPelicula.setVisible(false);
+			txtCodigoFuncion.setVisible(false);
 			lblCdigo.setVisible(false);
-			button.setVisible(false);
 			
 			lblEstado.setVisible(false);
 			lblTeléfono.setVisible(false);
 			lblEstado.setVisible(false);
+			btnCine.setVisible(false);
+			btnSala.setVisible(false);
+			btnPelicula.setVisible(false);
 
 		}
 	}
@@ -522,13 +579,13 @@ public class Salas extends JDialog implements ActionListener {
 
 	void codigo() {
 		if (cbbOpciones.getSelectedIndex() == 0) {
-			txtCodigoSala.setEditable(false);
+			txtCodigoFuncion.setEditable(false);
 		} else if (cbbOpciones.getSelectedIndex() == 1) {
-			txtCodigoSala.setEditable(true);
+			txtCodigoFuncion.setEditable(true);
 		} else if (cbbOpciones.getSelectedIndex() == 2) {
-			txtCodigoSala.setEditable(true);
+			txtCodigoFuncion.setEditable(true);
 		} else if (cbbOpciones.getSelectedIndex() == 3) {
-			txtCodigoSala.setEditable(true);
+			txtCodigoFuncion.setEditable(true);
 		}
 	}
 

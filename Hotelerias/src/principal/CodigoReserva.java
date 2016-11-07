@@ -191,9 +191,8 @@ public class CodigoReserva extends JDialog implements ActionListener, MouseListe
 		if (a.tamano() > 0) {
 			for (int i = 0; i < a.tamano(); i++) {
 				Reservas reser = a.obtener(i);
-				Object datos[] = { reser.getCodigoReserva(), reser.getFechaRegistro(), reser.getFechaIngreso(),
-						reser.getFechaSalida(), reser.getCodigoCliente(), reser.getCodigoCajero(),
-						reser.getNumeroHabitacion(), reser.getCodigoRecepcionista(), reser.estado() };
+				Object datos[] = { reser.getCodigoReserva(), reser.getCodigoCliente(), reser.getCodigoEmpleado(),
+						reser.getCodigoFuncion(), reser.getFechaReserva(), reser.getHoraIngreso(), reser.estado() };
 				dtm.addRow(datos);
 			}
 		} else {
@@ -210,9 +209,8 @@ public class CodigoReserva extends JDialog implements ActionListener, MouseListe
 		try {
 			Reservas reser = a.buscar(leerCodigo());
 			if (reser != null) {
-				Object datos[] = { reser.getCodigoReserva(), reser.getFechaRegistro(), reser.getFechaIngreso(),
-						reser.getFechaSalida(), reser.getCodigoCliente(), reser.getCodigoCajero(),
-						reser.getNumeroHabitacion(), reser.getCodigoRecepcionista(), reser.estado() };
+				Object datos[] = { reser.getCodigoReserva(), reser.getCodigoCliente(), reser.getCodigoEmpleado(),
+						reser.getCodigoFuncion(), reser.getFechaReserva(), reser.getHoraIngreso(), reser.estado()};
 				dtm.addRow(datos);
 
 				mensaje("Reserva Econtrada");

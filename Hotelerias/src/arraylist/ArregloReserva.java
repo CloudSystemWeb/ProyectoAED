@@ -45,7 +45,7 @@ public class ArregloReserva {
 		return null;
 	}
 
-	public ArrayList<String> buscarFech(String fecha1, String fecha2) {
+	/**public ArrayList<String> buscarFech(String fecha1, String fecha2) {
 		ArrayList<String> arregloTemporal = new ArrayList<String>();
 		for (Reservas c : reser) {
 			if (c.getFechaIngreso().equalsIgnoreCase(fecha1) && c.getFechaSalida().equalsIgnoreCase(fecha2)) {
@@ -53,15 +53,15 @@ public class ArregloReserva {
 			}
 		}
 		return arregloTemporal;
-	}
+	}*/
 
-	public Reservas buscarFecha(String fecha1, String fecha2) {
+	/*public Reservas buscarFecha(String fecha1, String fecha2) {
 		for (Reservas c : reser) {
 			if (c.getFechaIngreso().equalsIgnoreCase(fecha1) && c.getFechaSalida().equalsIgnoreCase(fecha2))
 				return c;
 		}
 		return null;
-	}
+	}*/
 
 	public int codigoMayor(int cod) {
 		int co = 100;
@@ -75,8 +75,8 @@ public class ArregloReserva {
 	public void cargarReserva() {
 		try {
 			BufferedReader c;
-			String linea, s[], fechaRegistro, fechaIngreso, fechaSalida;
-			int codigoReserva, codigoCliente, codigoCajero, CodigoRecepcionista, numeroHabitacion, estado;
+			String linea, s[], fechaReserva, horaIngreso;
+			int codigoReserva, codigoCliente, codigoEmpleado, codigoFuncion, estado;
 			Reservas nuevo;
 			c = new BufferedReader(new FileReader(archivo));
 			while ((linea = c.readLine()) != null) {
@@ -84,17 +84,14 @@ public class ArregloReserva {
 				codigoReserva = Integer.parseInt(s[0].trim());
 
 				codigoCliente = Integer.parseInt(s[1].trim());
-				codigoCajero = Integer.parseInt(s[2].trim());
-				CodigoRecepcionista = Integer.parseInt(s[3].trim());
-				numeroHabitacion = Integer.parseInt(s[4].trim());
-				fechaRegistro = s[5].trim();
-				fechaIngreso = s[6].trim();
-				fechaSalida = s[7].trim();
-
+				codigoEmpleado = Integer.parseInt(s[2].trim());
+				codigoFuncion  = Integer.parseInt(s[3].trim());
+				fechaReserva = s[4].trim();
+				horaIngreso = s[5].trim();
 				estado = Integer.parseInt(s[8].trim());
 
-				nuevo = new Reservas(codigoReserva, codigoCliente, codigoCajero, CodigoRecepcionista, numeroHabitacion,
-						fechaRegistro, fechaIngreso, fechaSalida, estado);
+				nuevo = new Reservas(codigoReserva, codigoCliente, codigoEmpleado, codigoFuncion,
+						fechaReserva,horaIngreso, estado);
 				adicionar(nuevo);
 			}
 			c.close();
@@ -111,9 +108,8 @@ public class ArregloReserva {
 			pw = new PrintWriter(new FileWriter(archivo));
 			for (int i = 0; i < tamano(); i++) {
 				x = obtener(i);
-				linea = x.getCodigoReserva() + ";" + x.getCodigoCliente() + ";" + x.getCodigoCajero() + ";"
-						+ x.getCodigoRecepcionista() + ";" + x.getNumeroHabitacion() + ";" + x.getFechaRegistro() + ";"
-						+ x.getFechaIngreso() + ";" + x.getFechaSalida() + ";" + x.getEstado();
+				linea = x.getCodigoReserva() + ";" + x.getCodigoCliente() + ";" + x.getCodigoEmpleado() + ";"
+						+ x.getCodigoFuncion() + ";" + x.getFechaReserva() + ";" + x.getHoraIngreso() + ";" + x.getEstado();
 				pw.println(linea);
 			}
 			pw.close();

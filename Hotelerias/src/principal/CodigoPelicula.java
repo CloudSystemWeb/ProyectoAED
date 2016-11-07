@@ -20,18 +20,17 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import arraylist.ArregloCine;
-import clases.Cine;
-public class CodigoCine extends JDialog implements ActionListener, MouseListener {
+import arraylist.ArregloPelicula;
+import clases.Pelicula;
+public class CodigoPelicula extends JDialog implements ActionListener, MouseListener {
 	
-	ArregloCine c = new ArregloCine("Cine.txt");
+	ArregloPelicula c = new ArregloPelicula("Pelicula.txt");
 	
 	private JButton btnListar;
 	private JButton btnSalir;
 	private JScrollPane scrollPane;
-	
 	public DefaultTableModel dtm;	
-	String cabecera[] = {"Código","Nombres","Departamento","Provincia","Distrito","Fecha","Tipo	"};
+	String cabecera[] = {"Código","Titulo Original","tipoCensura","FechaEstreno","Genero"};
 	private JTable tabla;
 	private JTextField txtCodigo;
 	private JButton btnBuscar;
@@ -47,7 +46,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CodigoCine dialog = new CodigoCine();
+					CodigoPelicula dialog = new CodigoPelicula();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
@@ -60,8 +59,8 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 	/**
 	 * Create the dialog.
 	 */
-	public CodigoCine() {
-		setTitle("C\u00D3DIGOS DE CINE");
+	public CodigoPelicula() {
+		setTitle("C\u00D3DIGOS DE PELICULA");
 		setBounds(100, 100, 589, 302);
 		{
 			btnListar = new JButton("Listar");
@@ -72,7 +71,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		}
 		{
 			btnSalir = new JButton("Salir");
-			btnSalir.setIcon(new ImageIcon(CodigoCine.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(CodigoPelicula.class.getResource("/imagenes/exit_button.gif")));
 			btnSalir.setBounds(461, 12, 102, 23);
 			btnSalir.addActionListener(this);
 			getContentPane().add(btnSalir);
@@ -118,7 +117,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		}
 		{
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(CodigoCine.class.getResource("/imagenes/the-desktop-hd-Windows-7-Black-wallpapers (1).jpeg")));
+			label.setIcon(new ImageIcon(CodigoPelicula.class.getResource("/imagenes/the-desktop-hd-Windows-7-Black-wallpapers (1).jpeg")));
 			label.setBounds(0, 0, 573, 263);
 			getContentPane().add(label);
 		}
@@ -142,29 +141,29 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 	void listar(){
 		if(c.tamaño()>0){
 			for(int i=0; i<c.tamaño(); i++){
-				clases.Cine clien=c.obtener(i);
-				Object datos [] = {clien.getCodCine(),clien.getNombre(),clien.getDepartamento(),
-						clien.getProvincia(),clien.getDistrito(),clien.getFechaIniOper()};
+				Pelicula clien=c.obtener(i);
+				Object datos [] = {clien.getCodPelicula(),clien.getTituloOri(),clien.getTipoCensura(),
+						clien.getFechEstreno(),clien.getGenero()};
 				dtm.addRow(datos);
 				}
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "No hay Cine","MENSAJE",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "No hay Película","MENSAJE",JOptionPane.ERROR_MESSAGE);
 	   }
 	}	
 	void consultar(){
 		try{
-		Cine clien=c.buscar(leerCodigo());
+		Pelicula clien=c.buscar(leerCodigo());
 		if(clien!=null){
-			Object datos [] = {clien.getCodCine(),clien.getNombre(),clien.getDepartamento(),
-					clien.getProvincia(),clien.getDistrito(),clien.getFechaIniOper(), clien.getEstadoCine()};
+			Object datos [] = {clien.getCodPelicula(),clien.getTituloOri(),clien.getTipoCensura(),
+					clien.getFechEstreno(),clien.getGenero()};
 				dtm.addRow(datos);
 				
-				mensaje("Cine Encontrado");
+				mensaje("Película Encontrado");
 				txtCodigo.requestFocus();
 		}
 		else
-		JOptionPane.showMessageDialog(null, "Cine no existe","ALERTA",JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Película no existe","ALERTA",JOptionPane.ERROR_MESSAGE);
 		txtCodigo.requestFocus();
 	}catch(Exception e){
 		mensaje("Ingrese Un Código");
@@ -180,7 +179,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		try{
 		String dato;
 		dato=txtCodigo.getText();
-		Salas.txtCodigoCine.setText(dato);
+		Funcion.txtCodigoPelicula.setText(dato);
 		this.dispose();
 		}catch(Exception e){
 			this.dispose();

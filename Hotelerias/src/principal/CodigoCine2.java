@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 import arraylist.ArregloCine;
 import clases.Cine;
-public class CodigoCine extends JDialog implements ActionListener, MouseListener {
+public class CodigoCine2 extends JDialog implements ActionListener, MouseListener {
 	
 	ArregloCine c = new ArregloCine("Cine.txt");
 	
@@ -47,7 +47,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CodigoCine dialog = new CodigoCine();
+					CodigoCine2 dialog = new CodigoCine2();
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
@@ -60,7 +60,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 	/**
 	 * Create the dialog.
 	 */
-	public CodigoCine() {
+	public CodigoCine2() {
 		setTitle("C\u00D3DIGOS DE CINE");
 		setBounds(100, 100, 589, 302);
 		{
@@ -72,7 +72,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		}
 		{
 			btnSalir = new JButton("Salir");
-			btnSalir.setIcon(new ImageIcon(CodigoCine.class.getResource("/imagenes/exit_button.gif")));
+			btnSalir.setIcon(new ImageIcon(CodigoCine2.class.getResource("/imagenes/exit_button.gif")));
 			btnSalir.setBounds(461, 12, 102, 23);
 			btnSalir.addActionListener(this);
 			getContentPane().add(btnSalir);
@@ -118,7 +118,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		}
 		{
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(CodigoCine.class.getResource("/imagenes/the-desktop-hd-Windows-7-Black-wallpapers (1).jpeg")));
+			label.setIcon(new ImageIcon(CodigoCine2.class.getResource("/imagenes/the-desktop-hd-Windows-7-Black-wallpapers (1).jpeg")));
 			label.setBounds(0, 0, 573, 263);
 			getContentPane().add(label);
 		}
@@ -180,7 +180,7 @@ public class CodigoCine extends JDialog implements ActionListener, MouseListener
 		try{
 		String dato;
 		dato=txtCodigo.getText();
-		Salas.txtCodigoCine.setText(dato);
+		Funcion.txtCodigoCine.setText(dato);
 		this.dispose();
 		}catch(Exception e){
 			this.dispose();

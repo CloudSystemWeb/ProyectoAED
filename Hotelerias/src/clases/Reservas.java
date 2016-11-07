@@ -1,105 +1,114 @@
 package clases;
 
-import javax.swing.JOptionPane;
-
 public class Reservas {
 
 	private int codigoReserva;
 	private int codigoCliente;
-	private int codigoCajero;
-	private int CodigoRecepcionista;
-	private int numeroHabitacion;
-	private String fechaRegistro;
-	private String fechaIngreso;
-	private String fechaSalida;
+	private int codigoEmpleado;
+	private int codigoFuncion;
+	private String fechaReserva;
+	private String HoraIngreso;
 	private int estado;
-
-	public Reservas(int codigoReserva, int codigoCliente, int codigoCajero, int codigoRecepcionista,
-			int numeroHabitacion, String fechaRegistro, String fechaIngreso, String fechaSalida, int estado) {
-
+	
+	
+	
+	public Reservas(int codigoReserva, int codigoCliente, int codigoEmpleado, int codigoFuncion, String fechaReserva,
+			String horaIngreso, int estado) {
+		super();
 		this.codigoReserva = codigoReserva;
 		this.codigoCliente = codigoCliente;
-		this.codigoCajero = codigoCajero;
-		this.CodigoRecepcionista = codigoRecepcionista;
-		this.numeroHabitacion = numeroHabitacion;
-		this.fechaRegistro = fechaRegistro;
-		this.fechaIngreso = fechaIngreso;
-		this.fechaSalida = fechaSalida;
+		this.codigoEmpleado = codigoEmpleado;
+		this.codigoFuncion = codigoFuncion;
+		this.fechaReserva = fechaReserva;
+		HoraIngreso = horaIngreso;
 		this.estado = estado;
-
 	}
+
+	
 
 	public int getCodigoReserva() {
 		return codigoReserva;
 	}
 
+
+
 	public void setCodigoReserva(int codigoReserva) {
-		codigoReserva = codigoReserva;
+		this.codigoReserva = codigoReserva;
 	}
+
+
 
 	public int getCodigoCliente() {
 		return codigoCliente;
 	}
 
+
+
 	public void setCodigoCliente(int codigoCliente) {
 		this.codigoCliente = codigoCliente;
 	}
 
-	public int getCodigoCajero() {
-		return codigoCajero;
+
+
+	public int getCodigoEmpleado() {
+		return codigoEmpleado;
 	}
 
-	public void setCodigoCajero(int codigoCajero) {
-		this.codigoCajero = codigoCajero;
+
+
+	public void setCodigoEmpleado(int codigoEmpleado) {
+		this.codigoEmpleado = codigoEmpleado;
 	}
 
-	public int getCodigoRecepcionista() {
-		return CodigoRecepcionista;
+
+
+	public int getCodigoFuncion() {
+		return codigoFuncion;
 	}
 
-	public void setCodigoRecepcionista(int codigoRecepcionista) {
-		CodigoRecepcionista = codigoRecepcionista;
+
+
+	public void setCodigoFuncion(int codigoFuncion) {
+		this.codigoFuncion = codigoFuncion;
 	}
 
-	public int getNumeroHabitacion() {
-		return numeroHabitacion;
+
+
+	public String getFechaReserva() {
+		return fechaReserva;
 	}
 
-	public void setNumeroHabitacion(int numeroHabitacion) {
-		this.numeroHabitacion = numeroHabitacion;
+
+
+	public void setFechaReserva(String fechaReserva) {
+		this.fechaReserva = fechaReserva;
 	}
 
-	public String getFechaRegistro() {
-		return fechaRegistro;
+
+
+	public String getHoraIngreso() {
+		return HoraIngreso;
 	}
 
-	public void setFechaRegistro(String fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+
+
+	public void setHoraIngreso(String horaIngreso) {
+		HoraIngreso = horaIngreso;
 	}
 
-	public String getFechaIngreso() {
-		return fechaIngreso;
-	}
 
-	public void setFechaIngreso(String fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
-	}
-
-	public String getFechaSalida() {
-		return fechaSalida;
-	}
-
-	public void setFechaSalida(String fechaSalida) {
-		this.fechaSalida = fechaSalida;
-	}
 
 	public int getEstado() {
 		return estado;
 	}
 
+
+
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
+
+
 
 	public String estado() {
 		String m = null;

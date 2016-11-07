@@ -17,7 +17,7 @@ public class ArregloPelicula {
 	public ArregloPelicula(String Pelicula){
 		clien = new ArrayList<Pelicula>();
 		this.Pelicula = Pelicula;
-		//cargarCliente();
+		cargarPelicula();
 	}
 	public void adicionar(Pelicula c){
 		clien.add(c);
@@ -64,32 +64,30 @@ public class ArregloPelicula {
 		return f.exists();
 	}
 	
-	/*
-	public void cargarCliente() {
+	
+	public void cargarPelicula() {
 			try {
 				BufferedReader  c;
-				String          linea, s[], tituloDistri,tituloOri,fechEstreno,genero,paisOri,duracion,recaudacion;
-				int             codigo,estadoProyec,tipoCensura,tipoProye ,sinopsis ;
+				String          linea, s[], tituloDistri,tituloOri,fechEstreno,genero,paisOri,duracion,recaudacion,sinopsis;
+				int             codigo,estadoProyec,tipoCensura,tipoProye;
 				Pelicula         nuevo;
 				c = new BufferedReader(new FileReader(Pelicula));
 				while ((linea = c.readLine()) != null) {
 					s = linea.split(";");
 					codigo = Integer.parseInt(s[0].trim());
-					
 					tituloDistri = s[1].trim();
 					tituloOri = s[2].trim();
 					fechEstreno = s[3].trim();
 					genero = s[4].trim();
 					paisOri = s[5].trim();
-					sinopsis = Integer.parseInt(s[6].trim());
+					sinopsis = s[6].trim();
 					duracion = s[7].trim();
 					recaudacion = s[8].trim();
 					tipoProye = Integer.parseInt(s[9].trim());
 					estadoProyec = Integer.parseInt(s[10].trim());
 					tipoCensura = Integer.parseInt(s[10].trim());
 					
-
-	
+					
 					nuevo = new Pelicula(codigo,tituloDistri,tituloOri,fechEstreno,genero,paisOri,sinopsis, duracion,recaudacion,tipoProye,estadoProyec ,tipoCensura );
 					adicionar(nuevo);
 				}
@@ -98,7 +96,7 @@ public class ArregloPelicula {
 			catch(Exception e) {
 			}
 		}
-	*/
+	
 	public void grabarClientes() {
 		try {
 			PrintWriter  pw;

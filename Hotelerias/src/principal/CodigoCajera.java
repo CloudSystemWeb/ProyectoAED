@@ -331,7 +331,7 @@ public class CodigoCajera extends JDialog implements ActionListener, MouseListen
 		try {
 			String dato;
 			dato = txtCodigo.getText();
-			Reserva.txtCodigoCajera.setText(dato);
+			Reserva.txtCodigoEmpleado.setText(dato);
 
 			this.dispose();
 		} catch (Exception e) {

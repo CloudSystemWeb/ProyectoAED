@@ -49,37 +49,29 @@ public class Reserva extends JFrame implements ActionListener {
 	private JLabel lblCdigoCliente;
 	private JLabel lblCdigoCajerao;
 	private JLabel lblCdigoHabitacin;
-	private JLabel lblCdigoRecepcionista;
 	private JLabel lblFechaRegistro;
 	private JLabel lblFechaSalida;
 	private JLabel lblFechaIngreso;
 	private JTextField txtCodigoReserva;
 	static JTextField txtCodigoCliente;
-	static JTextField txtCodigoCajera;
-	static JTextField txtCodigoHabitacion;
-	static JTextField txtCodigoRecepcionista;
+	static JTextField txtCodigoEmpleado;
+	static JTextField txtCodigoFuncion;
 	private JButton btnProcesar;
 	private JButton btnSalir;
 	private JButton btnBuscar_1;
 	private JButton btnBuscar_2;
 	private JButton btnBuscar_3;
-	private JButton btnBuscar_4;
-	private JLabel lblEstadoReserva;
-	private JComboBox cboEstado;
 	private JLabel lblOpciones;
 	private JComboBox cboOpciones;
 	private JScrollPane scrollPane;
 	private JTextField txtFechaRegistro;
-	private JComboBox cboDia;
-	private JComboBox cboMes;
-	private JComboBox cboAno;
 	private JComboBox cboDias;
 	private JComboBox cboMeses;
 	private JComboBox cboAnos;
-	private JLabel label;
 	private JTextArea txtS;
 
 	int contador;
+	private JTextField txtHoraReserva;
 
 	/**
 	 * Launch the application.
@@ -107,55 +99,48 @@ public class Reserva extends JFrame implements ActionListener {
 		getContentPane().setLayout(null);
 		{
 			lblCdigoReserva = new JLabel("C\u00F3digo Reserva");
-			lblCdigoReserva.setForeground(new Color(255, 255, 255));
+			lblCdigoReserva.setForeground(Color.RED);
 			lblCdigoReserva.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/password.png")));
 			lblCdigoReserva.setBounds(10, 11, 115, 14);
 			getContentPane().add(lblCdigoReserva);
 		}
 		{
 			lblCdigoCliente = new JLabel("C\u00F3digo Cliente");
-			lblCdigoCliente.setForeground(new Color(255, 255, 255));
+			lblCdigoCliente.setForeground(Color.RED);
 			lblCdigoCliente.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/password.png")));
 			lblCdigoCliente.setBounds(10, 44, 115, 14);
 			getContentPane().add(lblCdigoCliente);
 		}
 		{
 			lblCdigoCajerao = new JLabel("C\u00F3digo Cajera (o)");
-			lblCdigoCajerao.setForeground(new Color(255, 255, 255));
+			lblCdigoCajerao.setForeground(Color.RED);
 			lblCdigoCajerao.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/password.png")));
 			lblCdigoCajerao.setBounds(10, 73, 129, 14);
 			getContentPane().add(lblCdigoCajerao);
 		}
 		{
-			lblCdigoHabitacin = new JLabel("C\u00F3digo Habitaci\u00F3n");
-			lblCdigoHabitacin.setForeground(new Color(255, 255, 255));
+			lblCdigoHabitacin = new JLabel("C\u00F3digo Funci\u00F3n");
+			lblCdigoHabitacin.setForeground(Color.RED);
 			lblCdigoHabitacin.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/password.png")));
 			lblCdigoHabitacin.setBounds(10, 106, 129, 14);
 			getContentPane().add(lblCdigoHabitacin);
 		}
 		{
-			lblCdigoRecepcionista = new JLabel("C\u00F3digo Recepcionista");
-			lblCdigoRecepcionista.setForeground(new Color(255, 255, 255));
-			lblCdigoRecepcionista.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/password.png")));
-			lblCdigoRecepcionista.setBounds(257, 11, 154, 14);
-			getContentPane().add(lblCdigoRecepcionista);
-		}
-		{
 			lblFechaRegistro = new JLabel("Fecha Registro");
-			lblFechaRegistro.setForeground(new Color(255, 255, 255));
-			lblFechaRegistro.setBounds(283, 44, 87, 14);
+			lblFechaRegistro.setForeground(Color.RED);
+			lblFechaRegistro.setBounds(283, 14, 87, 14);
 			getContentPane().add(lblFechaRegistro);
 		}
 		{
-			lblFechaSalida = new JLabel("Fecha Salida");
-			lblFechaSalida.setForeground(new Color(255, 255, 255));
-			lblFechaSalida.setBounds(283, 106, 87, 14);
+			lblFechaSalida = new JLabel("Hora");
+			lblFechaSalida.setForeground(Color.RED);
+			lblFechaSalida.setBounds(283, 78, 87, 14);
 			getContentPane().add(lblFechaSalida);
 		}
 		{
-			lblFechaIngreso = new JLabel("Fecha Ingreso");
-			lblFechaIngreso.setForeground(new Color(255, 255, 255));
-			lblFechaIngreso.setBounds(283, 73, 87, 14);
+			lblFechaIngreso = new JLabel("Fecha");
+			lblFechaIngreso.setForeground(Color.RED);
+			lblFechaIngreso.setBounds(283, 47, 87, 14);
 			getContentPane().add(lblFechaIngreso);
 		}
 		{
@@ -178,32 +163,23 @@ public class Reserva extends JFrame implements ActionListener {
 			SNumeros(txtCodigoCliente);
 		}
 		{
-			txtCodigoCajera = new JTextField();
-			txtCodigoCajera.setBackground(Color.WHITE);
-			txtCodigoCajera.setBounds(135, 70, 86, 20);
-			getContentPane().add(txtCodigoCajera);
-			txtCodigoCajera.setColumns(10);
-			txtCodigoCajera.setEditable(false);
-			SNumeros(txtCodigoCajera);
+			txtCodigoEmpleado = new JTextField();
+			txtCodigoEmpleado.setBackground(Color.WHITE);
+			txtCodigoEmpleado.setBounds(135, 70, 86, 20);
+			getContentPane().add(txtCodigoEmpleado);
+			txtCodigoEmpleado.setColumns(10);
+			txtCodigoEmpleado.setEditable(false);
+			SNumeros(txtCodigoEmpleado);
 		}
 		{
-			txtCodigoHabitacion = new JTextField();
-			txtCodigoHabitacion.setBackground(Color.WHITE);
-			txtCodigoHabitacion.setBounds(135, 103, 86, 20);
-			getContentPane().add(txtCodigoHabitacion);
-			txtCodigoHabitacion.setColumns(10);
-			txtCodigoHabitacion.setEditable(false);
-			txtCodigoHabitacion.setEditable(false);
-			SNumeros(txtCodigoHabitacion);
-		}
-		{
-			txtCodigoRecepcionista = new JTextField();
-			txtCodigoRecepcionista.setBackground(Color.WHITE);
-			txtCodigoRecepcionista.setBounds(410, 10, 86, 20);
-			getContentPane().add(txtCodigoRecepcionista);
-			txtCodigoRecepcionista.setColumns(10);
-			txtCodigoRecepcionista.setEditable(false);
-			SNumeros(txtCodigoRecepcionista);
+			txtCodigoFuncion = new JTextField();
+			txtCodigoFuncion.setBackground(Color.WHITE);
+			txtCodigoFuncion.setBounds(135, 103, 86, 20);
+			getContentPane().add(txtCodigoFuncion);
+			txtCodigoFuncion.setColumns(10);
+			txtCodigoFuncion.setEditable(false);
+			txtCodigoFuncion.setEditable(false);
+			SNumeros(txtCodigoFuncion);
 		}
 		{
 			btnProcesar = new JButton("<html><p>Procesar</p></html>");
@@ -245,35 +221,16 @@ public class Reserva extends JFrame implements ActionListener {
 			getContentPane().add(btnBuscar_3);
 		}
 		{
-			btnBuscar_4 = new JButton("");
-			btnBuscar_4.addActionListener(this);
-			btnBuscar_4.setIcon(new ImageIcon(Reserva.class.getResource("/imagenes/lupa.png")));
-			btnBuscar_4.setBounds(495, 9, 51, 22);
-			getContentPane().add(btnBuscar_4);
-		}
-		{
-			lblEstadoReserva = new JLabel("Estado Reserva");
-			lblEstadoReserva.setForeground(new Color(255, 255, 255));
-			lblEstadoReserva.setBounds(10, 141, 98, 14);
-			getContentPane().add(lblEstadoReserva);
-		}
-		{
-			cboEstado = new JComboBox();
-			cboEstado.setModel(new DefaultComboBoxModel(new String[] { "Iniciada", "Anulada", "Atendida" }));
-			cboEstado.setBounds(135, 138, 98, 20);
-			getContentPane().add(cboEstado);
-		}
-		{
-			lblOpciones = new JLabel("Opciones");
-			lblOpciones.setForeground(new Color(255, 255, 255));
-			lblOpciones.setBounds(283, 141, 87, 14);
+			lblOpciones = new JLabel("Estado");
+			lblOpciones.setForeground(Color.RED);
+			lblOpciones.setBounds(283, 109, 87, 14);
 			getContentPane().add(lblOpciones);
 		}
 		{
 			cboOpciones = new JComboBox();
 			cboOpciones.addActionListener(this);
-			cboOpciones.setModel(new DefaultComboBoxModel(new String[] { "Ingreso", "Anulaci\u00F3n", "Listado" }));
-			cboOpciones.setBounds(410, 138, 118, 20);
+			cboOpciones.setModel(new DefaultComboBoxModel(new String[] { "Reservada", "Reserva Usada", "Reserva Cancelada","Reserva Caducada" }));
+			cboOpciones.setBounds(410, 106, 118, 20);
 			getContentPane().add(cboOpciones);
 		}
 		{
@@ -290,7 +247,7 @@ public class Reserva extends JFrame implements ActionListener {
 			txtFechaRegistro = new JTextField();
 			txtFechaRegistro.setBackground(Color.WHITE);
 			txtFechaRegistro.setEditable(false);
-			txtFechaRegistro.setBounds(410, 41, 118, 20);
+			txtFechaRegistro.setBounds(410, 11, 118, 20);
 			getContentPane().add(txtFechaRegistro);
 			txtFechaRegistro.setColumns(10);
 			txtFechaRegistro.setText("" + fechaactual());
@@ -298,66 +255,44 @@ public class Reserva extends JFrame implements ActionListener {
 
 		}
 		{
-			cboDia = new JComboBox();
-			cboDia.setModel(new DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "04", "06", "07", "08",
-					"09", "01", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
-					"25", "26", "27", "28", "29", "30", "31" }));
-			cboDia.setBounds(380, 103, 51, 20);
-			getContentPane().add(cboDia);
-		}
-		{
-			cboMes = new JComboBox();
-			cboMes.setModel(new DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril ", "Mayo",
-					"Juni ", "Julio", "Agosto", "Agosto", "Septiembre", "Octubre", "Diciembre" }));
-			cboMes.setBounds(431, 103, 87, 20);
-			getContentPane().add(cboMes);
-		}
-		{
-			cboAno = new JComboBox();
-			cboAno.setModel(
-					new DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-			cboAno.setBounds(518, 103, 68, 20);
-			getContentPane().add(cboAno);
-		}
-		{
 			cboDias = new JComboBox();
 			cboDias.setModel(new DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "04", "06", "07", "08",
 					"09", "01", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
 					"25", "26", "27", "28", "29", "30", "31" }));
-			cboDias.setBounds(380, 70, 51, 20);
+			cboDias.setBounds(380, 44, 51, 20);
 			getContentPane().add(cboDias);
 		}
 		{
 			cboMeses = new JComboBox();
 			cboMeses.setModel(new DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril ", "Mayo",
 					"Juni ", "Julio", "Agosto", "Agosto", "Septiembre", "Octubre", "Diciembre" }));
-			cboMeses.setBounds(431, 70, 87, 20);
+			cboMeses.setBounds(431, 44, 87, 20);
 			getContentPane().add(cboMeses);
 		}
 		{
 			cboAnos = new JComboBox();
 			cboAnos.setModel(
 					new DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-			cboAnos.setBounds(518, 70, 68, 20);
+			cboAnos.setBounds(518, 44, 68, 20);
 			getContentPane().add(cboAnos);
 		}
 		{
-			label = new JLabel("New label");
-			label.setIcon(new ImageIcon(Reserva.class
-					.getResource("/imagenes/imagenes-de-pantalla-foto-fondo-de-escritorio-pc-windows-9.jpg")));
-			label.setBounds(0, 0, 718, 354);
-			getContentPane().add(label);
+			txtHoraReserva = new JTextField();
+			txtHoraReserva.setText("06/11/2016");
+			txtHoraReserva.setEditable(false);
+			txtHoraReserva.setBackground(Color.WHITE);
+			txtHoraReserva.setBounds(410, 70, 118, 20);
+			getContentPane().add(txtHoraReserva);
+			txtHoraReserva.setColumns(10);
+			
 		}
 		listar();
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == cboOpciones) {
+		/*if (arg0.getSource() == cboOpciones) {
 			do_cboOpciones_actionPerformed(arg0);
-		}
-		if (arg0.getSource() == btnBuscar_4) {
-			do_btnBuscar_4_actionPerformed(arg0);
-		}
+		}*/
 		if (arg0.getSource() == btnBuscar_3) {
 			do_btnBuscar_3_actionPerformed(arg0);
 		}
@@ -377,11 +312,8 @@ public class Reserva extends JFrame implements ActionListener {
 	}
 
 	void limpiarFechas() {
-		cboAno.setSelectedIndex(0);
 		cboAnos.setSelectedIndex(0);
-		cboDia.setSelectedIndex(0);
 		cboDias.setSelectedIndex(0);
-		cboMes.setSelectedIndex(0);
 		cboMeses.setSelectedIndex(0);
 	}
 
@@ -413,9 +345,8 @@ public class Reserva extends JFrame implements ActionListener {
 		try {
 			Reservas reser = a.buscar(leerCodigoReserva());
 			if (reser == null) {
-				reser = new Reservas(leerCodigoReserva(), leerCodigoCliente(), leerCodigoCajera(),
-						leerCodigoHabitacion(), leerCodigoRecepcionista(), leerFechaRegistro(), leerFechaIngreso(),
-						leerFechaSalida(), leerEstado());
+				reser = new Reservas(leerCodigoReserva(), leerCodigoCliente(), leerCodigoEmpleado(),
+						leerCodigoFuncion(), leerFechaReserva(), leerHoraReserva(), leerEstado());
 				a.adicionar(reser);
 				listar();
 				txtCodigoReserva.setText("" + a.codigoMayor(contador));
@@ -454,15 +385,14 @@ public class Reserva extends JFrame implements ActionListener {
 	void listar() {
 		imprimir();
 		if (a.tamano() > 0) {
-			txtS.setText("\t\t REGISTRO DE DATOS DE LOS CLIENTES " + "\n");
+			txtS.setText("\t\t REGISTRO DE DATOS DE LOS RESERVA " + "\n");
 			imprimir(
 					"Código Reserva \t Código Cliente \t Código Cajera \t\t Código Recepci. \t Número Habita. \t Fecha Registro \t Fecha Ingreso \t\t Fecha Salida \t\t Estado Reser. ");
 			for (int i = 0; i < a.tamano(); i++) {
 				Reservas reser = a.obtener(i);
-				imprimir(reser.getCodigoReserva() + "\t\t" + reser.getCodigoCliente() + "\t\t" + reser.getCodigoCajero()
-						+ "\t\t" + reser.getNumeroHabitacion() + "\t\t" + reser.getCodigoRecepcionista() + "\t\t"
-						+ reser.getFechaRegistro() + "\t\t" + reser.getFechaIngreso() + "\t\t" + reser.getFechaSalida()
-						+ "\t\t" + reser.estado());
+				imprimir(reser.getCodigoReserva() + "\t\t" + reser.getCodigoCliente() + "\t\t" + reser.getCodigoEmpleado()
+						+ "\t\t" + reser.getCodigoEmpleado() + "\t\t" + reser.getFechaReserva() + "\t\t"
+						+ reser.getHoraIngreso() + "\t\t" + reser.getEstado());
 			}
 			imprimir("");
 			imprimir("Total de Reservas : " + a.tamano());
@@ -496,47 +426,38 @@ public class Reserva extends JFrame implements ActionListener {
 		return Integer.parseInt(txtCodigoReserva.getText());
 	}
 
-	public int leerCodigoHabitacion() {
-		return Integer.parseInt(txtCodigoHabitacion.getText());
-	}
-
-	public int leerCodigoRecepcionista() {
-		return Integer.parseInt(txtCodigoRecepcionista.getText());
+	public int leerCodigoFuncion() {
+		return Integer.parseInt(txtCodigoFuncion.getText());
 	}
 
 	public int leerCodigoCliente() {
 		return Integer.parseInt(txtCodigoCliente.getText());
 	}
 
-	public int leerCodigoCajera() {
-		return Integer.parseInt(txtCodigoCajera.getText());
+	public int leerCodigoEmpleado() {
+		return Integer.parseInt(txtCodigoEmpleado.getText());
 	}
 
-	public String leerFechaRegistro() {
+	public String leerFechaReserva() {
 		txtFechaRegistro.getText();
 		return fechaactual();
 	}
-
-	public int leerEstado() {
-		return cboEstado.getSelectedIndex();
+	
+	public String leerHoraReserva() {
+		return txtHoraReserva.getText();
 	}
 
+	public int leerEstado(){
+		return cboOpciones.getSelectedIndex();
+	}
+	
 	public int leerOpciones() {
 		return cboOpciones.getSelectedIndex();
 	}
 
 	///// los combosss de fecha
-	public String leerDia() {
-		return cboDia.getSelectedItem().toString();
-	}
 
-	public String leerMes() {
-		return String.valueOf(cboMes.getSelectedItem().toString());
-	}
 
-	public String leerAno() {
-		return String.valueOf(cboAno.getSelectedItem().toString());
-	}
 
 	public String leerDia1() {
 		return cboDias.getSelectedItem().toString();
@@ -550,11 +471,6 @@ public class Reserva extends JFrame implements ActionListener {
 		return cboAnos.getSelectedItem().toString();
 	}
 
-	public String leerFechaIngreso() {
-		String m = null;
-		m = leerDia() + "/" + leerMes() + "/" + leerAno();
-		return m;
-	}
 
 	public String leerFechaSalida() {
 		String m = null;
@@ -584,12 +500,11 @@ public class Reserva extends JFrame implements ActionListener {
 	}
 
 	void limpiar() {
-		txtCodigoCajera.setText("");
-		txtCodigoHabitacion.setText("");
-		txtCodigoRecepcionista.setText("");
+		txtCodigoEmpleado.setText("");
+		txtCodigoFuncion.setText("");
 		txtCodigoCliente.setText("");
 		txtCodigoCliente.requestFocus();
-		cboEstado.setSelectedIndex(0);
+		cboOpciones.setSelectedIndex(0);
 
 	}
 
@@ -608,11 +523,8 @@ public class Reserva extends JFrame implements ActionListener {
 	}
 
 	protected void do_btnBuscar_3_actionPerformed(ActionEvent arg0) {
-		//new CodigoHabitacion().setVisible(true);
-	}
-
-	protected void do_btnBuscar_4_actionPerformed(ActionEvent arg0) {
-//		new CodigoRecepcionista().setVisible(true);
+		CodigoFuncion cajera = new CodigoFuncion();
+		cajera.setVisible(true);
 	}
 
 	private void anular() {
@@ -620,39 +532,27 @@ public class Reserva extends JFrame implements ActionListener {
 			btnBuscar_1.setEnabled(true);
 			btnBuscar_2.setEnabled(true);
 			btnBuscar_3.setEnabled(true);
-			btnBuscar_4.setEnabled(true);
-			cboEstado.setEnabled(true);
-			cboAno.setEnabled(true);
+			cboOpciones.setEnabled(true);
 			cboAnos.setEnabled(true);
-			cboMes.setEnabled(true);
 			cboMeses.setEnabled(true);
-			cboDia.setEnabled(true);
 			cboDias.setEnabled(true);
 		} else if (cboOpciones.getSelectedIndex() == 1) {
 			txtCodigoReserva.setEditable(true);
 			btnBuscar_1.setEnabled(false);
 			btnBuscar_2.setEnabled(false);
 			btnBuscar_3.setEnabled(false);
-			btnBuscar_4.setEnabled(false);
-			cboEstado.setEnabled(false);
-			cboAno.setEnabled(false);
+			cboOpciones.setEnabled(false);
 			cboAnos.setEnabled(false);
-			cboMes.setEnabled(false);
 			cboMeses.setEnabled(false);
-			cboDia.setEnabled(false);
 			cboDias.setEnabled(false);
 		} else {
 			txtCodigoReserva.setEditable(false);
 			btnBuscar_1.setEnabled(false);
 			btnBuscar_2.setEnabled(false);
 			btnBuscar_3.setEnabled(false);
-			btnBuscar_4.setEnabled(false);
-			cboEstado.setEnabled(false);
-			cboAno.setEnabled(false);
+			cboOpciones.setEnabled(false);
 			cboAnos.setEnabled(false);
-			cboMes.setEnabled(false);
 			cboMeses.setEnabled(false);
-			cboDia.setEnabled(false);
 			cboDias.setEnabled(false);
 			listar();
 		}
@@ -662,11 +562,11 @@ public class Reserva extends JFrame implements ActionListener {
 		anular();
 	}
 
-	void restricicon() {
+	/*void restricicon() {
 		if (leerCodigoHabitacion() == leerCodigoHabitacion()) {
 			mensaje("Habitación ya esta reservada");
 		}
-	}
+	}*/
 
 	public void SNumeros(JTextField a) {
 		a.addKeyListener(new KeyAdapter() {

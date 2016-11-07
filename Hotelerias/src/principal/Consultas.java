@@ -270,7 +270,7 @@ public class Consultas extends JDialog implements ActionListener {
 			consultarDos();
 			break;
 		case 3:
-      	listarFecha(); 
+      	//listarFecha(); 
 			break;
 		case 4:
 			consultarCosto();
@@ -380,7 +380,7 @@ public class Consultas extends JDialog implements ActionListener {
 		}
 	}
 
-	void listarFecha() {
+	/*void listarFecha() {
 		if (leerFechaIngreso().equals("") || leerFechaSalida().equals("")) {
 			mensaje("UD. No ingresó las Fechas");
 			txtFechaIngreso.requestFocus();
@@ -393,12 +393,10 @@ public class Consultas extends JDialog implements ActionListener {
 				imprimir("");
 				imprimir(reser.getCodigoReserva() + "\t\t"
 						+ reser.getCodigoCliente() + "\t\t"
-						+ reser.getCodigoCajero() + "\t\t"
-						+ reser.getNumeroHabitacion() + "\t\t"
-						+ reser.getCodigoRecepcionista() + "\t\t"
-						+ reser.getFechaRegistro() + "\t\t"
-						+ reser.getFechaIngreso() + "\t\t"
-						+ reser.getFechaSalida() + "\t\t" 
+						+ reser.getCodigoEmpleado() + "\t\t"
+						+ reser.getCodigoFuncion() + "\t\t"
+						+ reser.getFechaReserva() + "\t\t"
+						+ reser.getHoraIngreso() + "\t\t"
 						+ reser.estado());
 
 				mensaje("Reserva Econtrada");
@@ -410,7 +408,7 @@ public class Consultas extends JDialog implements ActionListener {
 				txtFechaIngreso.requestFocus();
 			}
 		}
-	}
+	}*/
 
 	void imprimir(String s) {
 		txtS.append(s + "\n");

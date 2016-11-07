@@ -9,21 +9,21 @@ public class Pelicula {
 	private String genero;
 	private String paisOri;
 	private String Sinopsis;
+	private String Duracion;
+	private String recaudacion;
+	private int tipoProye;
+	private int EstadoProyec;
+	private int tipoCensura;
+	
+	
+	
+	
 	public String getSinopsis() {
 		return Sinopsis;
 	}
 	public void setSinopsis(String sinopsis) {
 		Sinopsis = sinopsis;
 	}
-
-	private String Duracion;
-	private String recaudacion;
-
-	
-
-	private int tipoProye;
-	private int EstadoProyec;
-	private int tipoCensura;
 	public int getCodPelicula() {
 		return codPelicula;
 	}
@@ -74,6 +74,9 @@ public class Pelicula {
 		this.recaudacion = recaudacion;
 	}
 
+
+	
+	
 	public Pelicula(int codPelicula, String tituloDistri, String tituloOri, String fechEstreno, String genero,
 			String paisOri, String sinopsis, String duracion, String recaudacion, int tipoProye, int estadoProyec,
 			int tipoCensura) {
@@ -91,6 +94,8 @@ public class Pelicula {
 		EstadoProyec = estadoProyec;
 		this.tipoCensura = tipoCensura;
 	}
+	
+	
 	public int getTipoProye() {
 		return tipoProye;
 	}
